@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Editor - Plate.io</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4F46E5;
+            --secondary: #EC4899;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --surface: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color: var(--surface);
+            border-right: 1px solid #E2E8F0;
+            padding: 2rem;
+            position: fixed;
+            width: 280px;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .nav-menu h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--gray);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .category-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .icon-button {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            background: var(--light);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .icon-button:hover {
+            color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: var(--light);
+            margin-bottom: 0.75rem;
+            transition: all 0.3s;
+            cursor: move;
+        }
+
+        .menu-item:hover {
+            transform: translateX(4px);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .item-image {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .item-content {
+            flex: 1;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .item-description {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .add-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            border: 2px dashed var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .add-item:hover {
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>Plate.io</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <h3>Menu</h3>
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu-editor.html" class="nav-link active">
+                            <i class="fas fa-edit"></i>
+                            Menu Editor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav-menu">
+                    <h3>Settings</h3>
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h1 class="page-title">Menu Editor</h1>
+                <div class="header-actions">
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-eye"></i>
+                        Preview
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </header>
+
+            <div class="menu-grid">
+                <div class="category-card">
+                    <div class="category-header">
+                        <h2 class="category-title">
+                            <i class="fas fa-utensils"></i>
+                            Main Course
+                        </h2>
+                        <div class="category-actions">
+                            <button class="icon-button">
+                                <i class="fas fa-pencil"></i>
+                            </button>
+                            <button class="icon-button">
+                                <i class="fas fa-ellipsis-vertical"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Grilled Salmon" class="item-image">
+                        <div class="item-content">
+                            <h3 class="item-title">Grilled Salmon</h3>
+                            <p class="item-description">Fresh Atlantic salmon, lemon herb butter</p>
+                        </div>
+                        <span class="item-price">$24.99</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Steak" class="item-image">
+                        <div class="item-content">
+                            <h3 class="item-title">Ribeye Steak</h3>
+                            <p class="item-description">12oz prime cut, garlic butter</p>
+                        </div>
+                        <span class="item-price">$32.99</span>
+                    </div>
+
+                    <button class="add-item">
+                        <i class="fas fa-plus"></i>
+                        Add Item
+                    </button>
+                </div>
+
+                <div class="category-card">
+                    <div class="category-header">
+                        <h2 class="category-title">
+                            <i class="fas fa-wine-glass-alt"></i>
+                            Beverages
+                        </h2>
+                        <div class="category-actions">
+                            <button class="icon-button">
+                                <i class="fas fa-pencil"></i>
+                            </button>
+                            <button class="icon-button">
+                                <i class="fas fa-ellipsis-vertical"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b" alt="Mojito" class="item-image">
+                        <div class="item-content">
+                            <h3 class="item-title">Classic Mojito</h3>
+                            <p class="item-description">Rum, mint, lime, soda</p>
+                        </div>
+                        <span class="item-price">$12.99</span>
+                    </div>
+
+                    <div class="menu-item">
+                        <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e" alt="Wine" class="item-image">
+                        <div class="item-content">
+                            <h3 class="item-title">House Red Wine</h3>
+                            <p class="item-description">Cabernet Sauvignon</p>
+                        </div>
+                        <span class="item-price">$9.99</span>
+                    </div>
+
+                    <button class="add-item">
+                        <i class="fas fa-plus"></i>
+                        Add Item
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html> 

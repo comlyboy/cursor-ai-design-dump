@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview CRM - Settings</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div class="fixed inset-y-0 left-0 w-64 bg-indigo-700 text-white transition-all duration-300 z-30">
+        <div class="flex items-center justify-center h-16 bg-indigo-800">
+            <h1 class="text-xl font-bold">Interview CRM</h1>
+        </div>
+        <nav class="mt-6">
+            <div class="px-4 py-3">
+                <div class="flex items-center space-x-3">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User" class="w-10 h-10 rounded-full">
+                    <div>
+                        <p class="text-sm font-semibold">Admin User</p>
+                        <p class="text-xs text-indigo-200">HR Manager</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="mt-6">
+                <li class="relative">
+                    <a href="../index.html" class="flex items-center px-4 py-3 text-indigo-100 hover:bg-indigo-600">
+                        <i class="fas fa-home w-5"></i>
+                        <span class="ml-3">Dashboard</span>
+                    </a>
+                </li>
+                <li class="relative">
+                    <a href="leads.html" class="flex items-center px-4 py-3 text-indigo-100 hover:bg-indigo-600">
+                        <i class="fas fa-users w-5"></i>
+                        <span class="ml-3">Leads</span>
+                    </a>
+                </li>
+                <li class="relative">
+                    <a href="calendar.html" class="flex items-center px-4 py-3 text-indigo-100 hover:bg-indigo-600">
+                        <i class="fas fa-calendar w-5"></i>
+                        <span class="ml-3">Calendar</span>
+                    </a>
+                </li>
+                <li class="relative">
+                    <a href="analytics.html" class="flex items-center px-4 py-3 text-indigo-100 hover:bg-indigo-600">
+                        <i class="fas fa-chart-bar w-5"></i>
+                        <span class="ml-3">Analytics</span>
+                    </a>
+                </li>
+                <li class="relative">
+                    <a href="settings.html" class="flex items-center px-4 py-3 text-indigo-100 bg-indigo-800">
+                        <i class="fas fa-cog w-5"></i>
+                        <span class="ml-3">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-64 p-8">
+        <!-- Top Bar -->
+        <div class="flex justify-between items-center mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-gray-800">Settings</h2>
+                <p class="text-gray-600">Manage your system preferences and configurations</p>
+            </div>
+        </div>
+
+        <!-- Settings Sections -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Client Companies Management -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-800">Client Companies</h3>
+                    <p class="text-sm text-gray-600">Manage your client companies and their requirements</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6">
+                        <button class="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            <i class="fas fa-plus mr-2"></i>
+                            Add New Company
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 border rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://ui-avatars.com/api/?name=Tech+Corp" class="w-10 h-10 rounded-full">
+                                <div class="ml-4">
+                                    <p class="text-sm font-semibold text-gray-800">Tech Corp</p>
+                                    <p class="text-xs text-gray-500">5 Open Positions</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-600 hover:text-gray-900">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center justify-between p-4 border rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://ui-avatars.com/api/?name=Design+Studio" class="w-10 h-10 rounded-full">
+                                <div class="ml-4">
+                                    <p class="text-sm font-semibold text-gray-800">Design Studio</p>
+                                    <p class="text-xs text-gray-500">3 Open Positions</p>
+                                </div>
+                            </div>
+                            <button class="text-gray-600 hover:text-gray-900">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-800">User Management</h3>
+                    <p class="text-sm text-gray-600">Manage team members and their roles</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6">
+                        <button class="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            <i class="fas fa-user-plus mr-2"></i>
+                            Add Team Member
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 border rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://ui-avatars.com/api/?name=John+Doe" class="w-10 h-10 rounded-full">
+                                <div class="ml-4">
+                                    <p class="text-sm font-semibold text-gray-800">John Doe</p>
+                                    <p class="text-xs text-gray-500">Admin</p>
+                                </div>
+                            </div>
+                            <select class="text-sm border-gray-300 rounded-md">
+                                <option>Admin</option>
+                                <option>Recruiter</option>
+                                <option>Interviewer</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center justify-between p-4 border rounded-lg">
+                            <div class="flex items-center">
+                                <img src="https://ui-avatars.com/api/?name=Jane+Smith" class="w-10 h-10 rounded-full">
+                                <div class="ml-4">
+                                    <p class="text-sm font-semibold text-gray-800">Jane Smith</p>
+                                    <p class="text-xs text-gray-500">Recruiter</p>
+                                </div>
+                            </div>
+                            <select class="text-sm border-gray-300 rounded-md">
+                                <option>Admin</option>
+                                <option selected>Recruiter</option>
+                                <option>Interviewer</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interview Process Templates -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-800">Interview Process Templates</h3>
+                    <p class="text-sm text-gray-600">Customize interview workflows for different positions</p>
+                </div>
+                <div class="p-6">
+                    <div class="mb-6">
+                        <button class="flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                            <i class="fas fa-plus mr-2"></i>
+                            Create Template
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 border rounded-lg">
+                            <div class="flex items-center justify-between mb-4">
+                                <p class="text-sm font-semibold text-gray-800">Software Engineer</p>
+                                <button class="text-gray-600 hover:text-gray-900">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Technical Screen</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Coding Test</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">System Design</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Culture Fit</span>
+                            </div>
+                        </div>
+                        <div class="p-4 border rounded-lg">
+                            <div class="flex items-center justify-between mb-4">
+                                <p class="text-sm font-semibold text-gray-800">Product Manager</p>
+                                <button class="text-gray-600 hover:text-gray-900">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            <div class="flex space-x-2">
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Initial Screen</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Case Study</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Team Fit</span>
+                                <span class="px-2 py-1 text-xs bg-gray-100 rounded">Final Round</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Preferences -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="p-6 border-b">
+                    <h3 class="text-lg font-semibold text-gray-800">System Preferences</h3>
+                    <p class="text-sm text-gray-600">Configure system-wide settings</p>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Notifications</label>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-indigo-600" checked>
+                                    <span class="ml-2 text-sm text-gray-600">New candidate applications</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-indigo-600" checked>
+                                    <span class="ml-2 text-sm text-gray-600">Interview schedule changes</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="rounded border-gray-300 text-indigo-600" checked>
+                                    <span class="ml-2 text-sm text-gray-600">Feedback submissions</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Calendar Integration</label>
+                            <select class="w-full rounded-lg border-gray-300">
+                                <option>Google Calendar</option>
+                                <option>Microsoft Outlook</option>
+                                <option>Apple Calendar</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Default Time Zone</label>
+                            <select class="w-full rounded-lg border-gray-300">
+                                <option>Pacific Time (PT)</option>
+                                <option>Eastern Time (ET)</option>
+                                <option>UTC</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

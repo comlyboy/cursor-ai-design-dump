@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Plate.io</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366F1;
+            --primary-dark: #4F46E5;
+            --secondary: #EC4899;
+            --dark: #1E293B;
+            --light: #F8FAFC;
+            --gray: #64748B;
+            --surface: #FFFFFF;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background-color: var(--surface);
+            border-right: 1px solid #E2E8F0;
+            padding: 2rem;
+            position: fixed;
+            width: 280px;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            text-decoration: none;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .nav-menu h3 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--gray);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .welcome {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .page-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            color: var(--dark);
+        }
+
+        .subtitle {
+            color: var(--gray);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-title {
+            color: var(--gray);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .stat-icon.revenue {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .stat-icon.orders {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        }
+
+        .stat-icon.customers {
+            background: linear-gradient(135deg, var(--warning) 0%, #D97706 100%);
+        }
+
+        .stat-icon.items {
+            background: linear-gradient(135deg, var(--secondary) 0%, #DB2777 100%);
+        }
+
+        .stat-value {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .stat-change {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .stat-change.positive {
+            color: var(--success);
+        }
+
+        .stat-change.negative {
+            color: var(--danger);
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .chart-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            color: var(--dark);
+        }
+
+        .chart-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chart-tab {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            background: var(--light);
+            color: var(--gray);
+        }
+
+        .chart-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .popular-items {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: var(--light);
+            transition: all 0.3s;
+        }
+
+        .item:hover {
+            transform: translateX(4px);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .item-image {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .item-category {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .item-stats {
+            text-align: right;
+        }
+
+        .item-orders {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .item-revenue {
+            font-size: 0.875rem;
+            color: var(--success);
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-utensils"></i>
+                <span>Plate.io</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <h3>Menu</h3>
+                    <li class="nav-item">
+                        <a href="dashboard.html" class="nav-link active">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu-editor.html" class="nav-link">
+                            <i class="fas fa-edit"></i>
+                            Menu Editor
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="analytics.html" class="nav-link">
+                            <i class="fas fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
+                </ul>
+
+                <ul class="nav-menu">
+                    <h3>Settings</h3>
+                    <li class="nav-item">
+                        <a href="profile.html" class="nav-link">
+                            <i class="fas fa-user"></i>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.html" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="welcome">
+                    <h1 class="page-title">Welcome back, John!</h1>
+                    <p class="subtitle">Here's what's happening with your restaurant today.</p>
+                </div>
+                <div class="header-actions">
+                    <a href="menu-editor.html" class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        Add Menu Item
+                    </a>
+                </div>
+            </header>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Total Revenue</span>
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">$12,426</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        8.2% vs last week
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Total Orders</span>
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">384</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        4.7% vs last week
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">New Customers</span>
+                        <div class="stat-icon customers">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">92</div>
+                    <div class="stat-change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        12.4% vs last week
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <span class="stat-title">Menu Items</span>
+                        <div class="stat-icon items">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">48</div>
+                    <div class="stat-change negative">
+                        <i class="fas fa-arrow-down"></i>
+                        2.1% vs last week
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h2 class="chart-title">Revenue Overview</h2>
+                        <div class="chart-actions">
+                            <button class="chart-tab">Week</button>
+                            <button class="chart-tab active">Month</button>
+                            <button class="chart-tab">Year</button>
+                        </div>
+                    </div>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+
+                <div class="popular-items">
+                    <div class="chart-header">
+                        <h2 class="chart-title">Popular Items</h2>
+                    </div>
+                    <div class="item-list">
+                        <div class="item">
+                            <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c" alt="Grilled Salmon" class="item-image">
+                            <div class="item-info">
+                                <div class="item-name">Grilled Salmon</div>
+                                <div class="item-category">Main Course</div>
+                            </div>
+                            <div class="item-stats">
+                                <div class="item-orders">48 orders</div>
+                                <div class="item-revenue">$1,199</div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Steak" class="item-image">
+                            <div class="item-info">
+                                <div class="item-name">Ribeye Steak</div>
+                                <div class="item-category">Main Course</div>
+                            </div>
+                            <div class="item-stats">
+                                <div class="item-orders">36 orders</div>
+                                <div class="item-revenue">$1,079</div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b" alt="Mojito" class="item-image">
+                            <div class="item-info">
+                                <div class="item-name">Classic Mojito</div>
+                                <div class="item-category">Beverages</div>
+                            </div>
+                            <div class="item-stats">
+                                <div class="item-orders">92 orders</div>
+                                <div class="item-revenue">$828</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Revenue Chart
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Revenue',
+                    data: [3200, 4100, 2900, 3800],
+                    borderColor: '#6366F1',
+                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

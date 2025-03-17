@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Editor - MenuMaster Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #2A9D8F;
+            --secondary: #E9C46A;
+            --dark: #264653;
+            --light: #F4F4F4;
+            --accent: #E76F51;
+            --success: #2ECC71;
+            --danger: #E74C3C;
+        }
+
+        body {
+            background-color: var(--light);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .editor-title {
+            color: var(--dark);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+
+        .categories-panel {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-item {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-item:hover {
+            background-color: var(--light);
+        }
+
+        .category-item.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .menu-items {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .menu-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            align-items: center;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .drag-handle {
+            cursor: move;
+            color: #999;
+        }
+
+        .item-details h3 {
+            margin-bottom: 0.25rem;
+            color: var(--dark);
+        }
+
+        .item-details p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .item-price {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-icon {
+            padding: 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .action-icon:hover {
+            background-color: var(--light);
+        }
+
+        .edit-icon {
+            color: var(--primary);
+        }
+
+        .delete-icon {
+            color: var(--danger);
+        }
+
+        @media (max-width: 768px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="logo">MenuMaster Pro</a>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="menu-editor.html" class="active">Menu Editor</a>
+                <a href="analytics.html">Analytics</a>
+                <a href="settings.html">Settings</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="editor-header">
+            <h1 class="editor-title">Menu Editor</h1>
+            <div class="action-buttons">
+                <button class="btn btn-secondary">
+                    <i class="fas fa-eye"></i>
+                    Preview Menu
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                    Save Changes
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-grid">
+            <aside class="categories-panel">
+                <h2>Categories</h2>
+                <ul class="category-list">
+                    <li class="category-item active">
+                        <span>Appetizers</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </li>
+                    <li class="category-item">
+                        <span>Main Course</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </li>
+                    <li class="category-item">
+                        <span>Desserts</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </li>
+                    <li class="category-item">
+                        <span>Beverages</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </li>
+                    <li class="category-item">
+                        <span>Cocktails</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </li>
+                </ul>
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-plus"></i>
+                    Add Category
+                </button>
+            </aside>
+
+            <section class="menu-items">
+                <div class="menu-item">
+                    <div class="drag-handle">
+                        <i class="fas fa-grip-vertical"></i>
+                    </div>
+                    <div class="item-details">
+                        <h3>Crispy Calamari</h3>
+                        <p>Fresh squid rings, lightly breaded and fried, served with marinara sauce</p>
+                    </div>
+                    <div class="item-actions">
+                        <span class="item-price">$12.99</span>
+                        <div class="action-icon edit-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="action-icon delete-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="drag-handle">
+                        <i class="fas fa-grip-vertical"></i>
+                    </div>
+                    <div class="item-details">
+                        <h3>Bruschetta</h3>
+                        <p>Toasted bread topped with fresh tomatoes, garlic, basil, and olive oil</p>
+                    </div>
+                    <div class="item-actions">
+                        <span class="item-price">$8.99</span>
+                        <div class="action-icon edit-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                        <div class="action-icon delete-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-plus"></i>
+                    Add Menu Item
+                </button>
+            </section>
+        </div>
+    </main>
+</body>
+</html> 
