@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scholar Beauty - Premium Wigs & Hair Solutions</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<style>
+		.gradient-text {
+			background: linear-gradient(to right, #8B5CF6, #D946EF);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.hero-gradient {
+			background: linear-gradient(135deg, #F3E8FF 0%, #FAF5FF 100%);
+		}
+
+		.floating {
+			animation: floating 3s ease-in-out infinite;
+		}
+
+		@keyframes floating {
+			0% {
+				transform: translate(0, 0px);
+			}
+
+			50% {
+				transform: translate(0, 15px);
+			}
+
+			100% {
+				transform: translate(0, -0px);
+			}
+		}
+
+		.card-hover {
+			transition: all 0.3s ease;
+		}
+
+		.card-hover:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		}
+
+		.scroll-indicator {
+			animation: bounce 2s infinite;
+		}
+
+		@keyframes bounce {
+
+			0%,
+			20%,
+			50%,
+			80%,
+			100% {
+				transform: translateY(0);
+			}
+
+			40% {
+				transform: translateY(-20px);
+			}
+
+			60% {
+				transform: translateY(-10px);
+			}
+		}
+	</style>
+</head>
+
+<body class="bg-gray-50">
+	<!-- Navigation -->
+	<nav class="bg-white/80 backdrop-blur-md shadow-lg fixed w-full z-50 transition-all duration-300">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="flex justify-between items-center h-20">
+				<div class="flex-shrink-0">
+					<a href="index.html" class="text-3xl font-bold gradient-text">Scholar Beauty</a>
+				</div>
+				<div class="hidden md:block">
+					<div class="ml-10 flex items-baseline space-x-8">
+						<a href="index.html"
+							class="text-purple-600 px-3 py-2 rounded-md font-medium hover:text-purple-800 transition-colors">Home</a>
+						<a href="products.html"
+							class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md font-medium transition-colors">Products</a>
+						<a href="styles.html"
+							class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md font-medium transition-colors">Hair
+							Styles</a>
+						<a href="#contact"
+							class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
+						<a href="#"
+							class="bg-purple-600 text-white px-6 py-2 rounded-full font-medium hover:bg-purple-700 transition-colors">Book
+							Now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<div class="relative hero-gradient min-h-screen flex items-center">
+		<div class="absolute inset-0 overflow-hidden">
+			<div class="absolute inset-0 bg-gradient-to-r from-purple-50 to-transparent"></div>
+			<div
+				class="absolute right-0 top-1/2 transform -translate-y-1/2 w-1/2 h-full bg-[url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3')] bg-cover bg-center">
+			</div>
+		</div>
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+				<div data-aos="fade-right">
+					<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">
+						<span class="block text-gray-900">Elevate Your</span>
+						<span class="block gradient-text mt-2">Beauty Journey</span>
+					</h1>
+					<p class="mt-6 text-xl text-gray-600 max-w-2xl">
+						Experience the transformation with our premium collection of wigs, weavons, and extensions.
+						Crafted for the modern woman who demands excellence.
+					</p>
+					<div class="mt-10 flex flex-wrap gap-4">
+						<a href="products.html"
+							class="px-8 py-4 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+							Explore Collection
+						</a>
+						<a href="#contact"
+							class="px-8 py-4 border-2 border-purple-600 text-purple-600 rounded-full font-medium hover:bg-purple-50 transition-all">
+							Book Consultation
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+			<i class="fas fa-chevron-down text-purple-600 text-2xl"></i>
+		</div>
+	</div>
+
+	<!-- Featured Products -->
+	<div class="py-24 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center" data-aos="fade-up">
+				<h2 class="text-4xl font-extrabold gradient-text mb-4">
+					Curated Collection
+				</h2>
+				<p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+					Discover our handpicked selection of premium hair solutions
+				</p>
+			</div>
+
+			<div class="mt-16 grid grid-cols-1 gap-y-10 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+				<!-- Featured Product 1 -->
+				<div class="group card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up"
+					data-aos-delay="100">
+					<div class="relative">
+						<div class="w-full h-96 bg-purple-100 overflow-hidden">
+							<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3" alt="Luxury Wig"
+								class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+						</div>
+						<div class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2">
+							<span class="text-purple-600 font-semibold">$299</span>
+						</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-lg font-semibold text-gray-900">Luxury Brazilian Wig</h3>
+						<p class="mt-2 text-gray-500">Natural Black | 100% Human Hair</p>
+						<div class="mt-4 flex items-center justify-between">
+							<div class="flex items-center">
+								<div class="flex items-center">
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+								</div>
+								<span class="ml-2 text-sm text-gray-500">(128 reviews)</span>
+							</div>
+							<button class="text-purple-600 hover:text-purple-800">
+								<i class="fas fa-heart"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Featured Product 2 -->
+				<div class="group card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up"
+					data-aos-delay="200">
+					<div class="relative">
+						<div class="w-full h-96 bg-purple-100 overflow-hidden">
+							<img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?ixlib=rb-4.0.3" alt="Premium Weave"
+								class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+						</div>
+						<div class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2">
+							<span class="text-purple-600 font-semibold">$199</span>
+						</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-lg font-semibold text-gray-900">Premium Weave</h3>
+						<p class="mt-2 text-gray-500">Silky Straight | Remy Hair</p>
+						<div class="mt-4 flex items-center justify-between">
+							<div class="flex items-center">
+								<div class="flex items-center">
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star-half-alt text-yellow-400"></i>
+								</div>
+								<span class="ml-2 text-sm text-gray-500">(96 reviews)</span>
+							</div>
+							<button class="text-purple-600 hover:text-purple-800">
+								<i class="fas fa-heart"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+
+				<!-- Featured Product 3 -->
+				<div class="group card-hover bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up"
+					data-aos-delay="300">
+					<div class="relative">
+						<div class="w-full h-96 bg-purple-100 overflow-hidden">
+							<img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-4.0.3" alt="Curly Wig"
+								class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+						</div>
+						<div class="absolute top-4 right-4 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2">
+							<span class="text-purple-600 font-semibold">$249</span>
+						</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-lg font-semibold text-gray-900">Curly Wonder Wig</h3>
+						<p class="mt-2 text-gray-500">Deep Wave | Virgin Hair</p>
+						<div class="mt-4 flex items-center justify-between">
+							<div class="flex items-center">
+								<div class="flex items-center">
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+									<i class="fas fa-star text-yellow-400"></i>
+								</div>
+								<span class="ml-2 text-sm text-gray-500">(157 reviews)</span>
+							</div>
+							<button class="text-purple-600 hover:text-purple-800">
+								<i class="fas fa-heart"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- About Section -->
+	<div class="py-24 bg-gradient-to-b from-white to-purple-50">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="lg:text-center mb-16" data-aos="fade-up">
+				<h2 class="text-4xl font-extrabold gradient-text">
+					The Scholar Beauty Experience
+				</h2>
+				<p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+					Discover why thousands of women trust us for their hair transformation journey
+				</p>
+			</div>
+
+			<div class="mt-10">
+				<div class="grid grid-cols-1 gap-12 lg:grid-cols-3">
+					<div class="relative p-8 bg-white rounded-2xl shadow-lg card-hover" data-aos="fade-up" data-aos-delay="100">
+						<div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+							<div class="w-12 h-12 bg-purple-600 rounded-xl rotate-45 flex items-center justify-center">
+								<i class="fas fa-crown text-white -rotate-45"></i>
+							</div>
+						</div>
+						<div class="mt-8 text-center">
+							<h3 class="text-xl font-semibold text-gray-900">Premium Quality</h3>
+							<p class="mt-4 text-gray-500">
+								Ethically sourced, premium grade hair products that meet our rigorous quality standards.
+							</p>
+						</div>
+					</div>
+
+					<div class="relative p-8 bg-white rounded-2xl shadow-lg card-hover" data-aos="fade-up" data-aos-delay="200">
+						<div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+							<div class="w-12 h-12 bg-purple-600 rounded-xl rotate-45 flex items-center justify-center">
+								<i class="fas fa-truck text-white -rotate-45"></i>
+							</div>
+						</div>
+						<div class="mt-8 text-center">
+							<h3 class="text-xl font-semibold text-gray-900">Express Delivery</h3>
+							<p class="mt-4 text-gray-500">
+								Fast, secure shipping with real-time tracking and signature confirmation.
+							</p>
+						</div>
+					</div>
+
+					<div class="relative p-8 bg-white rounded-2xl shadow-lg card-hover" data-aos="fade-up" data-aos-delay="300">
+						<div class="absolute -top-6 left-1/2 transform -translate-x-1/2">
+							<div class="w-12 h-12 bg-purple-600 rounded-xl rotate-45 flex items-center justify-center">
+								<i class="fas fa-headset text-white -rotate-45"></i>
+							</div>
+						</div>
+						<div class="mt-8 text-center">
+							<h3 class="text-xl font-semibold text-gray-900">Expert Support</h3>
+							<p class="mt-4 text-gray-500">
+								Personalized consultation and dedicated after-sales support team.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Contact Section -->
+	<div id="contact" class="py-24 bg-white">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+				<div data-aos="fade-right">
+					<h2 class="text-4xl font-extrabold gradient-text mb-8">Get in Touch</h2>
+					<form class="space-y-6">
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+							<div>
+								<label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+								<input type="text"
+									class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+							</div>
+							<div>
+								<label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+								<input type="text"
+									class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+							</div>
+						</div>
+						<div>
+							<label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+							<input type="email"
+								class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+						</div>
+						<div>
+							<label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+							<textarea rows="4"
+								class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-600 focus:border-transparent"></textarea>
+						</div>
+						<button type="submit"
+							class="w-full bg-purple-600 text-white py-3 rounded-lg font-medium hover:bg-purple-700 transition-colors">
+							Send Message
+						</button>
+					</form>
+				</div>
+
+				<div class="lg:pl-16" data-aos="fade-left">
+					<div class="bg-purple-50 rounded-2xl p-8 shadow-lg">
+						<h3 class="text-2xl font-semibold text-gray-900 mb-6">Visit Our Salon</h3>
+						<div class="space-y-6">
+							<div class="flex items-start space-x-4">
+								<div class="flex-shrink-0">
+									<div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+										<i class="fas fa-map-marker-alt text-white"></i>
+									</div>
+								</div>
+								<div>
+									<h4 class="text-lg font-medium text-gray-900">Location</h4>
+									<p class="mt-1 text-gray-500">123 Beauty Lane, Style City, ST 12345</p>
+								</div>
+							</div>
+
+							<div class="flex items-start space-x-4">
+								<div class="flex-shrink-0">
+									<div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+										<i class="fas fa-phone text-white"></i>
+									</div>
+								</div>
+								<div>
+									<h4 class="text-lg font-medium text-gray-900">Contact</h4>
+									<p class="mt-1 text-gray-500">+1 (555) 123-4567</p>
+									<p class="text-gray-500">info@scholarbeauty.com</p>
+								</div>
+							</div>
+
+							<div class="flex items-start space-x-4">
+								<div class="flex-shrink-0">
+									<div class="w-10 h-10 bg-purple-600 rounded-lg flex items-center justify-center">
+										<i class="fas fa-clock text-white"></i>
+									</div>
+								</div>
+								<div>
+									<h4 class="text-lg font-medium text-gray-900">Hours</h4>
+									<p class="mt-1 text-gray-500">Mon - Fri: 9:00 AM - 6:00 PM</p>
+									<p class="text-gray-500">Sat: 10:00 AM - 4:00 PM</p>
+									<p class="text-gray-500">Sun: Closed</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="bg-gray-900">
+		<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+				<div class="col-span-2">
+					<a href="index.html" class="text-3xl font-bold gradient-text">Scholar Beauty</a>
+					<p class="mt-4 text-gray-400 max-w-md">
+						Transform your look with our premium collection of wigs, weavons, and hair extensions.
+						Experience the luxury of quality hair products.
+					</p>
+					<div class="mt-6 flex space-x-6">
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-facebook-f text-xl"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-instagram text-xl"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-twitter text-xl"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-pinterest text-xl"></i>
+						</a>
+					</div>
+				</div>
+
+				<div>
+					<h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+					<ul class="space-y-3">
+						<li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+						<li><a href="styles.html" class="text-gray-400 hover:text-white transition-colors">Hair Styles</a></li>
+						<li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+						<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+					</ul>
+				</div>
+
+				<div>
+					<h3 class="text-lg font-semibold text-white mb-4">Newsletter</h3>
+					<p class="text-gray-400 mb-4">Subscribe to get special offers and updates</p>
+					<form class="flex">
+						<input type="email" placeholder="Enter your email"
+							class="flex-1 px-4 py-2 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-purple-600">
+						<button type="submit"
+							class="px-4 py-2 bg-purple-600 text-white rounded-r-lg hover:bg-purple-700 transition-colors">
+							<i class="fas fa-paper-plane"></i>
+						</button>
+					</form>
+				</div>
+			</div>
+			<div class="mt-12 border-t border-gray-800 pt-8 text-center">
+				<p class="text-gray-400">&copy; 2024 Scholar Beauty. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		AOS.init({
+			duration: 1000,
+			easing: 'ease-in-out',
+			once: true,
+			mirror: false
+		});
+
+		// Navbar scroll effect
+		window.addEventListener('scroll', function () {
+			const nav = document.querySelector('nav');
+			if (window.scrollY > 0) {
+				nav.classList.add('shadow-xl');
+			} else {
+				nav.classList.remove('shadow-xl');
+			}
+		});
+	</script>
+</body>
+
+</html>

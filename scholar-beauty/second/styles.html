@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hair Styles - Scholar Beauty</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<style>
+		.gradient-text {
+			background: linear-gradient(to right, #8B5CF6, #D946EF);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
+
+		.card-hover {
+			transition: all 0.3s ease;
+		}
+
+		.card-hover:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+		}
+
+		.style-card {
+			background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(217, 70, 239, 0.1));
+		}
+	</style>
+</head>
+
+<body class="bg-gray-50">
+	<!-- Navigation -->
+	<nav class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50 transition-all duration-300">
+		<div class="max-w-7xl mx-auto px-4">
+			<div class="flex justify-between items-center h-20">
+				<div class="flex-shrink-0">
+					<a href="index.html" class="text-3xl font-bold gradient-text">Scholar Beauty</a>
+				</div>
+				<div class="hidden md:block">
+					<div class="ml-10 flex items-baseline space-x-8">
+						<a href="index.html"
+							class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md font-medium transition-colors">Home</a>
+						<a href="products.html"
+							class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md font-medium transition-colors">Products</a>
+						<a href="styles.html" class="text-purple-600 px-3 py-2 rounded-md font-medium">Hair Styles</a>
+						<a href="index.html#contact"
+							class="text-gray-600 hover:text-purple-600 px-3 py-2 rounded-md font-medium transition-colors">Contact</a>
+						<a href="#"
+							class="bg-purple-600 text-white px-6 py-2 rounded-full font-medium hover:bg-purple-700 transition-colors">Book
+							Now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Header Section -->
+	<div class="bg-gradient-to-b from-purple-50 to-white">
+		<div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
+			<div class="text-center" data-aos="fade-up">
+				<h1 class="text-4xl md:text-5xl font-extrabold gradient-text mb-4">Hair Style Gallery</h1>
+				<p class="mt-4 max-w-xl mx-auto text-lg text-gray-600">
+					Discover your perfect look with our curated collection of stunning hairstyles.
+					Get inspired and transform your appearance with Scholar Beauty.
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Style Categories -->
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+		<div class="text-center mb-12" data-aos="fade-up">
+			<h2 class="text-3xl font-bold text-gray-900">Style Categories</h2>
+			<p class="mt-4 text-lg text-gray-600">Explore our diverse range of hairstyle options</p>
+		</div>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<!-- Category 1 -->
+			<div class="style-card rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="100">
+				<div class="relative h-64 rounded-xl overflow-hidden mb-6">
+					<img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3" alt="Straight Styles"
+						class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+					<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+					<h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Straight Styles</h3>
+				</div>
+				<p class="text-gray-600">Sleek and sophisticated straight hairstyles for a polished look.</p>
+			</div>
+
+			<!-- Category 2 -->
+			<div class="style-card rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="200">
+				<div class="relative h-64 rounded-xl overflow-hidden mb-6">
+					<img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-4.0.3" alt="Curly Styles"
+						class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+					<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+					<h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Curly Styles</h3>
+				</div>
+				<p class="text-gray-600">Embrace your natural beauty with our stunning curly hairstyles.</p>
+			</div>
+
+			<!-- Category 3 -->
+			<div class="style-card rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="300">
+				<div class="relative h-64 rounded-xl overflow-hidden mb-6">
+					<img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?ixlib=rb-4.0.3" alt="Wavy Styles"
+						class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+					<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+					<h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Wavy Styles</h3>
+				</div>
+				<p class="text-gray-600">Effortlessly chic waves that add volume and movement.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Trending Styles -->
+	<div class="bg-white py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12" data-aos="fade-up">
+				<h2 class="text-3xl font-bold text-gray-900">Trending Styles</h2>
+				<p class="mt-4 text-lg text-gray-600">Most popular hairstyles loved by our customers</p>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<!-- Style 1 -->
+				<div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="100">
+					<div class="relative">
+						<img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3" alt="Classic Bob"
+							class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+						<div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Trending</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-semibold text-gray-900 mb-2">Classic Bob</h3>
+						<p class="text-gray-600">A timeless style that suits every face shape.</p>
+						<div class="mt-4 flex items-center text-sm text-gray-500">
+							<i class="fas fa-clock mr-2"></i>
+							<span>45 mins</span>
+							<i class="fas fa-star text-yellow-400 ml-4 mr-2"></i>
+							<span>4.9 (128)</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Style 2 -->
+				<div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="200">
+					<div class="relative">
+						<img src="https://images.unsplash.com/photo-1599842057874-37393e9342df?ixlib=rb-4.0.3" alt="Long Layers"
+							class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+						<div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Popular</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-semibold text-gray-900 mb-2">Long Layers</h3>
+						<p class="text-gray-600">Add movement and volume to long hair.</p>
+						<div class="mt-4 flex items-center text-sm text-gray-500">
+							<i class="fas fa-clock mr-2"></i>
+							<span>60 mins</span>
+							<i class="fas fa-star text-yellow-400 ml-4 mr-2"></i>
+							<span>4.8 (96)</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Style 3 -->
+				<div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="300">
+					<div class="relative">
+						<img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3" alt="Modern Pixie"
+							class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+						<div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">New</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-semibold text-gray-900 mb-2">Modern Pixie</h3>
+						<p class="text-gray-600">Bold and contemporary short hairstyle.</p>
+						<div class="mt-4 flex items-center text-sm text-gray-500">
+							<i class="fas fa-clock mr-2"></i>
+							<span>30 mins</span>
+							<i class="fas fa-star text-yellow-400 ml-4 mr-2"></i>
+							<span>4.7 (84)</span>
+						</div>
+					</div>
+				</div>
+
+				<!-- Style 4 -->
+				<div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover" data-aos="fade-up" data-aos-delay="400">
+					<div class="relative">
+						<img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3" alt="Beach Waves"
+							class="w-full h-64 object-cover transform hover:scale-110 transition-transform duration-500">
+						<div class="absolute top-4 right-4 bg-purple-600 text-white px-3 py-1 rounded-full text-sm">Trending</div>
+					</div>
+					<div class="p-6">
+						<h3 class="text-xl font-semibold text-gray-900 mb-2">Beach Waves</h3>
+						<p class="text-gray-600">Effortlessly casual waves for any occasion.</p>
+						<div class="mt-4 flex items-center text-sm text-gray-500">
+							<i class="fas fa-clock mr-2"></i>
+							<span>50 mins</span>
+							<i class="fas fa-star text-yellow-400 ml-4 mr-2"></i>
+							<span>4.9 (156)</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Styling Tips -->
+	<div class="bg-gradient-to-b from-white to-purple-50 py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center mb-12" data-aos="fade-up">
+				<h2 class="text-3xl font-bold text-gray-900">Expert Styling Tips</h2>
+				<p class="mt-4 text-lg text-gray-600">Professional advice to maintain your perfect look</p>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+				<!-- Tip 1 -->
+				<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="100">
+					<div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+						<i class="fas fa-sun text-white text-xl"></i>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Daily Care</h3>
+					<p class="text-gray-600">Use sulfate-free shampoo and conditioner to maintain hair health and shine.</p>
+				</div>
+
+				<!-- Tip 2 -->
+				<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="200">
+					<div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+						<i class="fas fa-moon text-white text-xl"></i>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Nighttime Routine</h3>
+					<p class="text-gray-600">Protect your hair with a silk pillowcase and gentle securing methods.</p>
+				</div>
+
+				<!-- Tip 3 -->
+				<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="300">
+					<div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+						<i class="fas fa-spray-can text-white text-xl"></i>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Deep Conditioning</h3>
+					<p class="text-gray-600">Weekly deep conditioning treatments to maintain moisture and prevent damage.</p>
+				</div>
+
+				<!-- Tip 4 -->
+				<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 card-hover" data-aos="fade-up" data-aos-delay="400">
+					<div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+						<i class="fas fa-cut text-white text-xl"></i>
+					</div>
+					<h3 class="text-xl font-semibold text-gray-900 mb-2">Regular Maintenance</h3>
+					<p class="text-gray-600">Schedule regular trims and touch-ups to keep your style fresh and healthy.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Consultation CTA -->
+	<div class="bg-purple-600 py-16">
+		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="text-center" data-aos="fade-up">
+				<h2 class="text-3xl font-bold text-white mb-4">Ready to Transform Your Look?</h2>
+				<p class="text-purple-100 mb-8">Book a consultation with our expert stylists today</p>
+				<a href="#"
+					class="inline-block px-8 py-3 bg-white text-purple-600 rounded-full font-medium hover:bg-purple-50 transition-colors">
+					Schedule Consultation
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer class="bg-gray-900">
+		<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+				<div class="col-span-2">
+					<a href="index.html" class="text-3xl font-bold gradient-text">Scholar Beauty</a>
+					<p class="mt-4 text-gray-400 max-w-md">
+						Transform your look with our premium collection of wigs, weavons, and hair extensions.
+						Experience the luxury of quality hair products.
+					</p>
+					<div class="mt-6 flex space-x-6">
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-facebook-f text-xl"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-instagram text-xl"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-twitter text-xl"></i>
+						</a>
+						<a href="#" class="text-gray-400 hover:text-white transition-colors">
+							<i class="fab fa-pinterest text-xl"></i>
+						</a>
+					</div>
+				</div>
+
+				<div>
+					<h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
+					<ul class="space-y-3">
+						<li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+						<li><a href="products.html" class="text-gray-400 hover:text-white transition-colors">Products</a></li>
+						<li><a href="index.html#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+						<li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+					</ul>
+				</div>
+
+				<div>
+					<h3 class="text-lg font-semibold text-white mb-4">Customer Service</h3>
+					<ul class="space-y-3">
+						<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Shipping Info</a></li>
+						<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Returns</a></li>
+						<li><a href="#" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+						<li><a href="#" class="text-gray-400 hover:text-white transition-colors">Track Order</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="mt-12 border-t border-gray-800 pt-8 text-center">
+				<p class="text-gray-400">&copy; 2024 Scholar Beauty. All rights reserved.</p>
+			</div>
+		</div>
+	</footer>
+
+	<script>
+		AOS.init({
+			duration: 1000,
+			easing: 'ease-in-out',
+			once: true,
+			mirror: false
+		});
+
+		// Navbar scroll effect
+		window.addEventListener('scroll', function () {
+			const nav = document.querySelector('nav');
+			if (window.scrollY > 0) {
+				nav.classList.add('shadow-xl');
+			} else {
+				nav.classList.remove('shadow-xl');
+			}
+		});
+	</script>
+</body>
+
+</html>
