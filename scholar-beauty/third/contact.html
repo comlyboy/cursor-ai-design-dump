@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Scholar Beauty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fbf7f1',
+                            100: '#f7eee3',
+                            200: '#efdcc7',
+                            300: '#e7caab',
+                            400: '#dfb88f',
+                            500: '#d7a673',
+                            600: '#cf9457',
+                            700: '#c7823b',
+                            800: '#bf701f',
+                            900: '#b75e03',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .contact-header {
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3') center/cover;
+        }
+        .hover-translate {
+            transition: transform 0.3s ease;
+        }
+        .hover-translate:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-24">
+                <a href="index.html" class="font-serif text-3xl font-bold text-gold-800">Scholar Beauty</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">HOME</a>
+                    <a href="products.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">COLLECTIONS</a>
+                    <a href="styles.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">STYLES</a>
+                    <a href="about.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">ABOUT</a>
+                    <a href="contact.html" class="text-sm font-medium text-gold-800">CONTACT</a>
+                    <a href="#book" class="px-6 py-3 bg-gold-800 text-white text-sm font-medium hover:bg-gold-900 transition-colors">BOOK NOW</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="contact-header min-h-[60vh] flex items-center pt-24">
+        <div class="max-w-7xl mx-auto px-6 py-24">
+            <div data-aos="fade-up">
+                <h1 class="font-serif text-6xl font-bold text-white mb-6">Get in Touch</h1>
+                <p class="text-lg text-gray-200 mb-12 max-w-xl">Experience personalized service and expert consultation. We're here to help you achieve your perfect look.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <!-- Contact Card 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-translate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-map-marker-alt text-gold-800 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Visit Our Salon</h3>
+                    <p class="text-gray-600">123 Luxury Avenue<br>New York, NY 10001<br>United States</p>
+                    <a href="#map" class="inline-block mt-6 text-gold-800 hover:text-gold-900 transition-colors">View Map <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+                <!-- Contact Card 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-translate" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-gold-800 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Business Hours</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span>9:00 AM - 8:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>10:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Card 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-translate" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-phone text-gold-800 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Contact Info</h3>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>
+                            <span class="block text-sm text-gray-500">Phone</span>
+                            <a href="tel:+15551234567" class="hover:text-gold-800 transition-colors">+1 (555) 123-4567</a>
+                        </li>
+                        <li>
+                            <span class="block text-sm text-gray-500">Email</span>
+                            <a href="mailto:info@scholarbeauty.com" class="hover:text-gold-800 transition-colors">info@scholarbeauty.com</a>
+                        </li>
+                        <li>
+                            <span class="block text-sm text-gray-500">WhatsApp</span>
+                            <a href="#" class="hover:text-gold-800 transition-colors">+1 (555) 987-6543</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div data-aos="fade-right">
+                    <h2 class="font-serif text-5xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
+                    <p class="text-gray-600 mb-12">Have questions about our services or products? Fill out the form below and we'll get back to you as soon as possible.</p>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-800">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-800">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-800">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-800">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-800">
+                                <option>General Inquiry</option>
+                                <option>Product Information</option>
+                                <option>Booking Request</option>
+                                <option>After-care Support</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-gold-800"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-4 bg-gold-800 text-white text-sm font-medium hover:bg-gold-900 transition-colors">SEND MESSAGE</button>
+                    </form>
+                </div>
+                <div class="relative" data-aos="fade-left">
+                    <div class="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.119763973046!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1645564764976!5m2!1sen!2s" 
+                            width="100%" 
+                            height="600" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-5xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Find quick answers to common questions about our services and products.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">What payment methods do you accept?</h3>
+                    <p class="text-gray-600">We accept all major credit cards, PayPal, and Apple Pay. For in-store purchases, we also accept cash payments.</p>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Do you offer consultations?</h3>
+                    <p class="text-gray-600">Yes, we offer free consultations to help you choose the perfect style and products for your needs.</p>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">What is your return policy?</h3>
+                    <p class="text-gray-600">We offer a 30-day return policy for unused products in their original packaging. Custom orders are final sale.</p>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">How long do appointments typically take?</h3>
+                    <p class="text-gray-600">Appointment duration varies by service, ranging from 45 minutes to 2 hours. We'll provide specific timing during consultation.</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="faq.html" class="inline-block px-8 py-4 border border-gold-800 text-gold-800 text-sm font-medium hover:bg-gold-800 hover:text-white transition-colors">VIEW ALL FAQs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-2">
+                    <a href="index.html" class="font-serif text-3xl font-bold text-gold-500">Scholar Beauty</a>
+                    <p class="mt-4 text-gray-400 max-w-md">
+                        Elevate your beauty with our premium collection of luxury hair solutions. 
+                        Experience the difference of quality and expert care.
+                    </p>
+                    <div class="mt-6 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-gray-400 hover:text-gold-500 transition-colors">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-gold-500 transition-colors">Collections</a></li>
+                        <li><a href="styles.html" class="text-gray-400 hover:text-gold-500 transition-colors">Styles</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-gold-500 transition-colors">About</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Customer Care</h3>
+                    <ul class="space-y-4">
+                        <li><a href="faq.html" class="text-gray-400 hover:text-gold-500 transition-colors">FAQ</a></li>
+                        <li><a href="shipping.html" class="text-gray-400 hover:text-gold-500 transition-colors">Shipping</a></li>
+                        <li><a href="returns.html" class="text-gray-400 hover:text-gold-500 transition-colors">Returns</a></li>
+                        <li><a href="track-order.html" class="text-gray-400 hover:text-gold-500 transition-colors">Track Order</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-900 text-center">
+                <p class="text-gray-400">&copy; 2024 Scholar Beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out',
+            once: true
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html> 

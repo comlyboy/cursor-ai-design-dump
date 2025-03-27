@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Scholar Beauty</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'sans': ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        gold: {
+                            50: '#fbf7f1',
+                            100: '#f7eee3',
+                            200: '#efdcc7',
+                            300: '#e7caab',
+                            400: '#dfb88f',
+                            500: '#d7a673',
+                            600: '#cf9457',
+                            700: '#c7823b',
+                            800: '#bf701f',
+                            900: '#b75e03',
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .about-header {
+            background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3') center/cover;
+        }
+        .hover-translate {
+            transition: transform 0.3s ease;
+        }
+        .hover-translate:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-24">
+                <a href="index.html" class="font-serif text-3xl font-bold text-gold-800">Scholar Beauty</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">HOME</a>
+                    <a href="products.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">COLLECTIONS</a>
+                    <a href="styles.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">STYLES</a>
+                    <a href="about.html" class="text-sm font-medium text-gold-800">ABOUT</a>
+                    <a href="contact.html" class="text-sm font-medium text-gray-900 hover:text-gold-700 transition-colors">CONTACT</a>
+                    <a href="#book" class="px-6 py-3 bg-gold-800 text-white text-sm font-medium hover:bg-gold-900 transition-colors">BOOK NOW</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="about-header min-h-[60vh] flex items-center pt-24">
+        <div class="max-w-7xl mx-auto px-6 py-24">
+            <div data-aos="fade-up">
+                <h1 class="font-serif text-6xl font-bold text-white mb-6">Our Story</h1>
+                <p class="text-lg text-gray-200 mb-12 max-w-xl">Discover the passion and expertise behind Scholar Beauty, where luxury meets exceptional hair care.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Mission -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?ixlib=rb-4.0.3" alt="Luxury Salon" class="rounded-lg shadow-lg w-full h-[600px] object-cover">
+                </div>
+                <div data-aos="fade-left">
+                    <h2 class="font-serif text-5xl font-bold text-gray-900 mb-8">Our Mission</h2>
+                    <p class="text-gray-600 mb-8 text-lg leading-relaxed">At Scholar Beauty, we believe that every individual deserves to feel confident and beautiful. Our mission is to provide premium quality hair solutions that not only enhance your natural beauty but also empower you to express your unique style.</p>
+                    <p class="text-gray-600 mb-12 text-lg leading-relaxed">Founded in 2020, we have quickly become a trusted name in luxury hair care, known for our commitment to quality, innovation, and exceptional customer service.</p>
+                    <div class="grid grid-cols-2 gap-8">
+                        <div>
+                            <p class="text-4xl font-bold text-gold-800 mb-2">5000+</p>
+                            <p class="text-gray-600">Happy Clients</p>
+                        </div>
+                        <div>
+                            <p class="text-4xl font-bold text-gold-800 mb-2">100%</p>
+                            <p class="text-gray-600">Quality Assured</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-5xl font-bold text-gray-900 mb-4">Our Values</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The principles that guide us in delivering excellence every day.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-translate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-crown text-gold-800 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Quality Excellence</h3>
+                    <p class="text-gray-600">We source only the finest materials and maintain rigorous quality standards in all our products and services.</p>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-translate" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heart text-gold-800 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Customer First</h3>
+                    <p class="text-gray-600">Your satisfaction is our priority. We go above and beyond to ensure an exceptional experience.</p>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-lg hover-translate" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-gold-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-leaf text-gold-800 text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-4">Sustainability</h3>
+                    <p class="text-gray-600">We are committed to ethical sourcing and environmentally responsible practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-5xl font-bold text-gray-900 mb-4">Meet Our Experts</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our team of skilled professionals is dedicated to helping you achieve your perfect look.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden rounded-lg mb-6">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?ixlib=rb-4.0.3" alt="Team Member" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">Sarah Johnson</h3>
+                    <p class="text-gold-800 mb-4">Founder & Creative Director</p>
+                    <p class="text-gray-600">15+ years of experience in luxury hair care and styling.</p>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative overflow-hidden rounded-lg mb-6">
+                        <img src="https://images.unsplash.com/photo-1605980776566-0486c3ac7617?ixlib=rb-4.0.3" alt="Team Member" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">Michael Chen</h3>
+                    <p class="text-gold-800 mb-4">Lead Stylist</p>
+                    <p class="text-gray-600">Expert in custom wig design and color techniques.</p>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="relative overflow-hidden rounded-lg mb-6">
+                        <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?ixlib=rb-4.0.3" alt="Team Member" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">Emma Davis</h3>
+                    <p class="text-gold-800 mb-4">Senior Consultant</p>
+                    <p class="text-gray-600">Specialized in personalized hair solutions and care.</p>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="relative overflow-hidden rounded-lg mb-6">
+                        <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-4.0.3" alt="Team Member" class="w-full h-80 object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-gray-900 mb-2">David Thompson</h3>
+                    <p class="text-gold-800 mb-4">Quality Assurance Manager</p>
+                    <p class="text-gray-600">Ensures the highest standards in all our products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-gray-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-serif text-5xl font-bold text-white mb-4">Client Stories</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Hear from our valued clients about their Scholar Beauty experience.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-gold-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">"Scholar Beauty has transformed my confidence. Their attention to detail and personalized service is unmatched. I couldn't be happier with my results."</p>
+                    <p class="text-white font-medium">Jessica R.</p>
+                    <p class="text-gray-400">Loyal Client</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-gold-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">"The quality of their products is exceptional. The team's expertise and guidance helped me find the perfect solution for my needs."</p>
+                    <p class="text-white font-medium">Maria S.</p>
+                    <p class="text-gray-400">Regular Customer</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-gold-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">"From consultation to aftercare, Scholar Beauty provides an exceptional experience. Their products have exceeded my expectations."</p>
+                    <p class="text-white font-medium">Amanda T.</p>
+                    <p class="text-gray-400">VIP Client</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="font-serif text-5xl font-bold text-gray-900 mb-6">Experience the Difference</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto mb-12">Book a consultation with our experts and discover the perfect hair solution for you.</p>
+                <a href="#book" class="inline-block px-8 py-4 bg-gold-800 text-white text-sm font-medium hover:bg-gold-900 transition-colors">BOOK CONSULTATION</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-950 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <div class="col-span-2">
+                    <a href="index.html" class="font-serif text-3xl font-bold text-gold-500">Scholar Beauty</a>
+                    <p class="mt-4 text-gray-400 max-w-md">
+                        Elevate your beauty with our premium collection of luxury hair solutions. 
+                        Experience the difference of quality and expert care.
+                    </p>
+                    <div class="mt-6 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-facebook-f text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors">
+                            <i class="fab fa-pinterest text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="index.html" class="text-gray-400 hover:text-gold-500 transition-colors">Home</a></li>
+                        <li><a href="products.html" class="text-gray-400 hover:text-gold-500 transition-colors">Collections</a></li>
+                        <li><a href="styles.html" class="text-gray-400 hover:text-gold-500 transition-colors">Styles</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-gold-500 transition-colors">About</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-white mb-6">Customer Care</h3>
+                    <ul class="space-y-4">
+                        <li><a href="faq.html" class="text-gray-400 hover:text-gold-500 transition-colors">FAQ</a></li>
+                        <li><a href="shipping.html" class="text-gray-400 hover:text-gold-500 transition-colors">Shipping</a></li>
+                        <li><a href="returns.html" class="text-gray-400 hover:text-gold-500 transition-colors">Returns</a></li>
+                        <li><a href="track-order.html" class="text-gray-400 hover:text-gold-500 transition-colors">Track Order</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-900 text-center">
+                <p class="text-gray-400">&copy; 2024 Scholar Beauty. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            easing: 'ease-out',
+            once: true
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 0) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html> 
