@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+        }
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a5568;
+        }
+        .theme-transition {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .project-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .skill-card {
+            transition: transform 0.3s ease;
+        }
+        .skill-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 theme-transition">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-800 shadow-lg fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="text-xl font-bold text-gray-800 dark:text-white">Portfolio</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">About</a>
+                    <a href="#projects" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Projects</a>
+                    <a href="#skills" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Skills</a>
+                    <a href="#contact" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors">Contact</a>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 min-h-screen flex items-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+                    <span class="block">Hi, I'm</span>
+                    <span class="block gradient-text">Your Name</span>
+                </h1>
+                <p class="mt-3 max-w-md mx-auto text-base text-gray-500 dark:text-gray-400 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+                    Full Stack Developer | UI/UX Designer | Problem Solver
+                </p>
+                <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+                    <div class="rounded-md shadow">
+                        <a href="#contact" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10 transition-colors">
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+                    About Me
+                </h2>
+            </div>
+            <div class="mt-10">
+                <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+                    <div class="relative" data-aos="fade-right">
+                        <div class="aspect-w-3 aspect-h-4">
+                            <img class="object-cover shadow-lg rounded-lg" src="https://via.placeholder.com/400x500" alt="Profile">
+                        </div>
+                    </div>
+                    <div class="space-y-6" data-aos="fade-left">
+                        <p class="text-lg text-gray-500 dark:text-gray-400">
+                            I am a passionate developer with expertise in creating beautiful and functional web applications. With a strong foundation in both front-end and back-end development, I strive to build innovative solutions that make a difference.
+                        </p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-lg">
+                                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Experience</h3>
+                                <p class="mt-1 text-gray-500 dark:text-gray-400">5+ Years</p>
+                            </div>
+                            <div class="bg-white dark:bg-gray-700 p-4 rounded-lg shadow-lg">
+                                <h3 class="text-lg font-medium text-gray-900 dark:text-white">Projects</h3>
+                                <p class="mt-1 text-gray-500 dark:text-gray-400">20+ Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+                    Featured Projects
+                </h2>
+            </div>
+            <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                <!-- Project 1 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up">
+                    <div class="relative">
+                        <img class="w-full h-48 object-cover" src="https://via.placeholder.com/400x300" alt="Project 1">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-opacity flex items-center justify-center">
+                            <a href="#" class="text-white opacity-0 hover:opacity-100 transition-opacity">
+                                <i class="fas fa-external-link-alt text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Project Name 1</h3>
+                        <p class="mt-2 text-gray-500 dark:text-gray-400">Description of the project and its key features.</p>
+                        <div class="mt-4 flex space-x-4">
+                            <span class="px-2 py-1 text-xs font-semibold bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 rounded-full">React</span>
+                            <span class="px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative">
+                        <img class="w-full h-48 object-cover" src="https://via.placeholder.com/400x300" alt="Project 2">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-opacity flex items-center justify-center">
+                            <a href="#" class="text-white opacity-0 hover:opacity-100 transition-opacity">
+                                <i class="fas fa-external-link-alt text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Project Name 2</h3>
+                        <p class="mt-2 text-gray-500 dark:text-gray-400">Description of the project and its key features.</p>
+                        <div class="mt-4 flex space-x-4">
+                            <span class="px-2 py-1 text-xs font-semibold bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full">Vue.js</span>
+                            <span class="px-2 py-1 text-xs font-semibold bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="relative">
+                        <img class="w-full h-48 object-cover" src="https://via.placeholder.com/400x300" alt="Project 3">
+                        <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-50 transition-opacity flex items-center justify-center">
+                            <a href="#" class="text-white opacity-0 hover:opacity-100 transition-opacity">
+                                <i class="fas fa-external-link-alt text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Project Name 3</h3>
+                        <p class="mt-2 text-gray-500 dark:text-gray-400">Description of the project and its key features.</p>
+                        <div class="mt-4 flex space-x-4">
+                            <span class="px-2 py-1 text-xs font-semibold bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200 rounded-full">JavaScript</span>
+                            <span class="px-2 py-1 text-xs font-semibold bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-full">Firebase</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+                    Skills & Expertise
+                </h2>
+            </div>
+            <div class="mt-10">
+                <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+                    <div class="text-center skill-card" data-aos="zoom-in">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                            <i class="fab fa-html5 text-4xl text-orange-500"></i>
+                            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">HTML5</h3>
+                        </div>
+                    </div>
+                    <div class="text-center skill-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                            <i class="fab fa-css3-alt text-4xl text-blue-500"></i>
+                            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">CSS3</h3>
+                        </div>
+                    </div>
+                    <div class="text-center skill-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                            <i class="fab fa-js text-4xl text-yellow-500"></i>
+                            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">JavaScript</h3>
+                        </div>
+                    </div>
+                    <div class="text-center skill-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                            <i class="fab fa-react text-4xl text-blue-400"></i>
+                            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">React</h3>
+                        </div>
+                    </div>
+                    <div class="text-center skill-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                            <i class="fab fa-node text-4xl text-green-500"></i>
+                            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">Node.js</h3>
+                        </div>
+                    </div>
+                    <div class="text-center skill-card" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="bg-white dark:bg-gray-700 rounded-lg p-6 shadow-lg">
+                            <i class="fab fa-python text-4xl text-blue-600"></i>
+                            <h3 class="mt-2 text-lg font-medium text-gray-900 dark:text-white">Python</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
+                    Get in Touch
+                </h2>
+                <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">
+                    I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
+                </p>
+            </div>
+            <div class="mt-10 max-w-lg mx-auto">
+                <form class="grid grid-cols-1 gap-6" data-aos="fade-up">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                        <input type="text" name="name" id="name" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                        <input type="email" name="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
+                        <textarea name="message" id="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">
+                    <i class="fab fa-twitter text-2xl"></i>
+                </a>
+            </div>
+            <div class="mt-8 text-center text-gray-400">
+                <p>&copy; 2024 Your Name. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
