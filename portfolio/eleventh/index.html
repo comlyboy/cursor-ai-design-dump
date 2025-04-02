@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#1e293b',
+                        accent: '#3b82f6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-primary text-white font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-primary/90 backdrop-blur-sm z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-accent">Portfolio</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                    <a href="#about" class="hover:text-accent transition-colors">About</a>
+                    <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
+                    <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+                    <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                        Hello, I'm <span class="text-accent">Your Name</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        A passionate developer with over 5 years of experience in creating modern web applications.
+                        My journey in tech started with a curiosity about how things work on the internet, and that
+                        curiosity has evolved into a professional career where I build sophisticated digital solutions.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#experience" class="bg-accent px-6 py-3 rounded-lg hover:bg-accent/90 transition-colors">
+                            View Experience
+                        </a>
+                        <a href="#skills" class="border border-accent px-6 py-3 rounded-lg hover:bg-accent/10 transition-colors">
+                            My Skills
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-accent/20 rounded-full blur-3xl"></div>
+                        <div class="relative bg-secondary p-8 rounded-2xl">
+                            <div class="aspect-square rounded-lg overflow-hidden">
+                                <img src="https://via.placeholder.com/400" alt="Profile" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-accent/20 rounded-full blur-3xl"></div>
+                    <div class="relative bg-primary p-8 rounded-2xl">
+                        <div class="aspect-square rounded-lg overflow-hidden">
+                            <img src="https://via.placeholder.com/400" alt="Profile" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-4">Hello, I'm <span class="text-accent">Your Name</span></h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            I'm a passionate developer with over 5 years of experience in creating modern web applications.
+                            My journey in tech started with a curiosity about how things work on the internet, and that
+                            curiosity has evolved into a professional career where I build sophisticated digital solutions.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#" class="group flex items-center space-x-2 bg-primary px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors">
+                            <i class="fab fa-github text-xl text-gray-400 group-hover:text-accent"></i>
+                            <span class="text-gray-300 group-hover:text-accent">GitHub</span>
+                        </a>
+                        <a href="#" class="group flex items-center space-x-2 bg-primary px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors">
+                            <i class="fab fa-linkedin text-xl text-gray-400 group-hover:text-accent"></i>
+                            <span class="text-gray-300 group-hover:text-accent">LinkedIn</span>
+                        </a>
+                        <a href="#" class="group flex items-center space-x-2 bg-primary px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors">
+                            <i class="fab fa-twitter text-xl text-gray-400 group-hover:text-accent"></i>
+                            <span class="text-gray-300 group-hover:text-accent">Twitter</span>
+                        </a>
+                        <a href="#" class="group flex items-center space-x-2 bg-primary px-4 py-2 rounded-lg hover:bg-accent/10 transition-colors">
+                            <i class="fas fa-envelope text-xl text-gray-400 group-hover:text-accent"></i>
+                            <span class="text-gray-300 group-hover:text-accent">Email</span>
+                        </a>
+                    </div>
+                    <div class="pt-4">
+                        <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#skills" class="text-gray-400 hover:text-accent transition-colors">Skills</a>
+                            <a href="#experience" class="text-gray-400 hover:text-accent transition-colors">Experience</a>
+                            <a href="#projects" class="text-gray-400 hover:text-accent transition-colors">Projects</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">My Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-html5 text-orange-500 text-2xl"></i>
+                        <span class="font-medium">HTML5</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
+                        <span class="font-medium">CSS3</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-js text-yellow-400 text-2xl"></i>
+                        <span class="font-medium">JavaScript</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-react text-blue-400 text-2xl"></i>
+                        <span class="font-medium">React</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-node-js text-green-500 text-2xl"></i>
+                        <span class="font-medium">Node.js</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fab fa-python text-blue-500 text-2xl"></i>
+                        <span class="font-medium">Python</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-database text-purple-500 text-2xl"></i>
+                        <span class="font-medium">SQL</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-cloud text-blue-300 text-2xl"></i>
+                        <span class="font-medium">Cloud</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-paint-brush text-pink-500 text-2xl"></i>
+                        <span class="font-medium">UI/UX</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-code-branch text-green-400 text-2xl"></i>
+                        <span class="font-medium">DevOps</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-mobile-alt text-blue-300 text-2xl"></i>
+                        <span class="font-medium">Mobile</span>
+                    </div>
+                </div>
+                <div class="bg-secondary p-4 rounded-xl group hover:bg-accent/10 transition-colors">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-shield-alt text-yellow-500 text-2xl"></i>
+                        <span class="font-medium">Security</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="py-20 bg-secondary">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-12 text-center">Work Experience</h2>
+            <div class="grid gap-8">
+                <!-- Experience Item 1 -->
+                <div class="bg-primary p-8 rounded-2xl relative group hover:bg-accent/5 transition-colors">
+                    <div class="absolute -left-4 top-8 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white"></i>
+                    </div>
+                    <div class="ml-4">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="text-accent text-sm font-medium">2020 - Present</span>
+                                <h3 class="text-2xl font-semibold mt-1">Senior Full Stack Developer</h3>
+                                <p class="text-gray-400">Tech Company Inc.</p>
+                            </div>
+                            <div class="flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full">
+                                <i class="fas fa-building text-accent"></i>
+                                <span class="text-gray-300">Full-time</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Led the development of multiple enterprise-level applications using React, Node.js, and cloud technologies.
+                            Implemented CI/CD pipelines and automated testing processes.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-react text-blue-400 mr-2"></i>
+                                React
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-node-js text-green-500 mr-2"></i>
+                                Node.js
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-aws text-orange-500 mr-2"></i>
+                                AWS
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-docker text-blue-500 mr-2"></i>
+                                Docker
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="bg-primary p-8 rounded-2xl relative group hover:bg-accent/5 transition-colors">
+                    <div class="absolute -left-4 top-8 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white"></i>
+                    </div>
+                    <div class="ml-4">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="text-accent text-sm font-medium">2018 - 2020</span>
+                                <h3 class="text-2xl font-semibold mt-1">Full Stack Developer</h3>
+                                <p class="text-gray-400">Digital Solutions Ltd.</p>
+                            </div>
+                            <div class="flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full">
+                                <i class="fas fa-building text-accent"></i>
+                                <span class="text-gray-300">Full-time</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Developed and maintained multiple web applications using modern technologies.
+                            Collaborated with design team to implement responsive and user-friendly interfaces.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-vuejs text-green-500 mr-2"></i>
+                                Vue.js
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-python text-blue-500 mr-2"></i>
+                                Python
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fas fa-database text-purple-500 mr-2"></i>
+                                PostgreSQL
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-django text-green-600 mr-2"></i>
+                                Django
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="bg-primary p-8 rounded-2xl relative group hover:bg-accent/5 transition-colors">
+                    <div class="absolute -left-4 top-8 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                        <i class="fas fa-briefcase text-white"></i>
+                    </div>
+                    <div class="ml-4">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <div>
+                                <span class="text-accent text-sm font-medium">2016 - 2018</span>
+                                <h3 class="text-2xl font-semibold mt-1">Frontend Developer</h3>
+                                <p class="text-gray-400">Web Solutions Co.</p>
+                            </div>
+                            <div class="flex items-center space-x-2 bg-accent/10 px-4 py-2 rounded-full">
+                                <i class="fas fa-building text-accent"></i>
+                                <span class="text-gray-300">Full-time</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Created responsive and interactive web applications using modern frontend technologies.
+                            Implemented best practices for performance optimization and accessibility.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-html5 text-orange-500 mr-2"></i>
+                                HTML5
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-css3-alt text-blue-500 mr-2"></i>
+                                CSS3
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-js text-yellow-400 mr-2"></i>
+                                JavaScript
+                            </span>
+                            <span class="px-4 py-2 bg-accent/20 rounded-full text-sm flex items-center">
+                                <i class="fab fa-jquery text-blue-400 mr-2"></i>
+                                jQuery
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="text-center md:text-left mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold text-accent">Portfolio</h3>
+                    <p class="text-gray-400">© 2024 All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-accent transition-colors">
+                        <i class="fab fa-twitter text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
