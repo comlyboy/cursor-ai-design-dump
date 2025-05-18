@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Modern Bar Menu</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		body {
+			font-family: 'Inter', sans-serif;
+		}
+	</style>
+</head>
+
+<body class="bg-gray-100 flex justify-center py-10 px-4">
+
+	<div class="w-full max-w-[600px]">
+		<!-- Search Bar -->
+		<div class="mb-6">
+			<input type="text" placeholder="Search menu..."
+				class="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" />
+		</div>
+
+		<!-- Category Filters -->
+		<div class="flex flex-wrap gap-2 mb-6">
+			<button class="px-4 py-1.5 bg-blue-600 text-white text-sm rounded-full hover:bg-blue-700">All</button>
+			<button class="px-4 py-1.5 bg-gray-200 text-sm rounded-full hover:bg-gray-300">Burgers</button>
+			<button class="px-4 py-1.5 bg-gray-200 text-sm rounded-full hover:bg-gray-300">Pizza</button>
+			<button class="px-4 py-1.5 bg-gray-200 text-sm rounded-full hover:bg-gray-300">Salads</button>
+			<button class="px-4 py-1.5 bg-gray-200 text-sm rounded-full hover:bg-gray-300">Pasta</button>
+		</div>
+
+		<!-- Menu Items -->
+		<div class="space-y-4">
+			<!-- Item -->
+			<div class="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+				<div class="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center text-xl">🍔</div>
+				<div class="ml-4 flex-1">
+					<div class="flex justify-between items-start">
+						<h3 class="text-md font-semibold text-gray-800">Classic Burger</h3>
+						<span class="text-blue-600 font-semibold text-sm">$8.99</span>
+					</div>
+					<p class="text-sm text-gray-500 mt-1">Grilled beef patty, cheese, lettuce, tomato, special sauce.</p>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+				<div class="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center text-xl">🍕</div>
+				<div class="ml-4 flex-1">
+					<div class="flex justify-between items-start">
+						<h3 class="text-md font-semibold text-gray-800">Margherita Pizza</h3>
+						<span class="text-blue-600 font-semibold text-sm">$10.50</span>
+					</div>
+					<p class="text-sm text-gray-500 mt-1">Fresh basil, mozzarella, tomato sauce, olive oil drizzle.</p>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+				<div class="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center text-xl">🥗</div>
+				<div class="ml-4 flex-1">
+					<div class="flex justify-between items-start">
+						<h3 class="text-md font-semibold text-gray-800">Caesar Salad</h3>
+						<span class="text-blue-600 font-semibold text-sm">$7.50</span>
+					</div>
+					<p class="text-sm text-gray-500 mt-1">Romaine lettuce, croutons, parmesan, Caesar dressing.</p>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="flex items-start bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition">
+				<div class="w-16 h-16 bg-gray-200 rounded-md flex items-center justify-center text-xl">🍝</div>
+				<div class="ml-4 flex-1">
+					<div class="flex justify-between items-start">
+						<h3 class="text-md font-semibold text-gray-800">Spaghetti Bolognese</h3>
+						<span class="text-blue-600 font-semibold text-sm">$11.25</span>
+					</div>
+					<p class="text-sm text-gray-500 mt-1">Slow-cooked beef sauce with herbs over spaghetti noodles.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

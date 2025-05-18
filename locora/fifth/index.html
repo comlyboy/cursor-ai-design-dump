@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Restaurant Menu</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+	<div class="max-w-5xl mx-auto p-4">
+		<!-- Header -->
+		<header class="text-center mb-6">
+			<h1 class="text-4xl font-bold text-red-600">La Belle Cuisine</h1>
+			<p class="text-gray-600 text-lg">Fine dining & exquisite drinks</p>
+		</header>
+
+		<!-- Contact Info -->
+		<section class="text-center mb-10">
+			<p class="text-sm text-gray-700">📞 +1 (555) 123-4567 | ✉️ info@labellecuisine.com</p>
+			<p class="text-sm text-gray-700">📍 123 Gourmet St, Flavour Town, USA</p>
+		</section>
+
+		<!-- Menu Section -->
+		<section>
+			<h2 class="text-2xl font-semibold mb-4 border-b pb-2">Food Menu</h2>
+			<div class="grid md:grid-cols-2 gap-6">
+				<!-- Menu Item -->
+				<div class="bg-white p-4 rounded-lg shadow">
+					<div class="flex justify-between items-center">
+						<div>
+							<h3 class="text-lg font-semibold">Grilled Salmon</h3>
+							<p class="text-sm text-gray-500">Served with lemon butter sauce</p>
+						</div>
+						<div class="text-right">
+							<p class="text-red-500 font-bold">$18.99</p>
+							<input type="number" min="0" value="1" class="w-16 mt-1 border rounded p-1 text-sm text-center" />
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white p-4 rounded-lg shadow">
+					<div class="flex justify-between items-center">
+						<div>
+							<h3 class="text-lg font-semibold">Beef Lasagna</h3>
+							<p class="text-sm text-gray-500">Layered pasta with cheese and meat</p>
+						</div>
+						<div class="text-right">
+							<p class="text-red-500 font-bold">$14.50</p>
+							<input type="number" min="0" value="1" class="w-16 mt-1 border rounded p-1 text-sm text-center" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Drinks Section -->
+		<section class="mt-10">
+			<h2 class="text-2xl font-semibold mb-4 border-b pb-2">Drinks</h2>
+			<div class="grid md:grid-cols-2 gap-6">
+				<div class="bg-white p-4 rounded-lg shadow">
+					<div class="flex justify-between items-center">
+						<div>
+							<h3 class="text-lg font-semibold">Fresh Orange Juice</h3>
+							<p class="text-sm text-gray-500">100% organic oranges</p>
+						</div>
+						<div class="text-right">
+							<p class="text-red-500 font-bold">$4.00</p>
+							<input type="number" min="0" value="1" class="w-16 mt-1 border rounded p-1 text-sm text-center" />
+						</div>
+					</div>
+				</div>
+
+				<div class="bg-white p-4 rounded-lg shadow">
+					<div class="flex justify-between items-center">
+						<div>
+							<h3 class="text-lg font-semibold">Classic Mojito</h3>
+							<p class="text-sm text-gray-500">Mint, lime, and soda</p>
+						</div>
+						<div class="text-right">
+							<p class="text-red-500 font-bold">$5.50</p>
+							<input type="number" min="0" value="1" class="w-16 mt-1 border rounded p-1 text-sm text-center" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+
+</body>
+
+</html>
