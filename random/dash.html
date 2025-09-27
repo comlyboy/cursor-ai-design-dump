@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Menu Manager Dashboard</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lucide@0.135.0/dist/umd/lucide.min.js"></script>
+	<style>
+		.bg-primary-600 {
+			background-color: #f56565;
+		}
+
+		.bg-primary-700 {
+			background-color: #c05353;
+		}
+
+		.bg-primary-100 {
+			background-color: #ffe5e5;
+		}
+
+		.text-primary-600 {
+			color: #f56565;
+		}
+
+		.text-primary-500 {
+			color: #fb7c7c;
+		}
+
+		.focus\:ring-primary-500:focus {
+			--tw-ring-color: #fb7c7c;
+		}
+	</style>
+</head>
+
+<body class="min-h-screen bg-gray-50 py-8" onload="lucide.createIcons()">
+
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<!-- Header -->
+		<div class="flex justify-between items-center mb-8">
+			<div>
+				<h1 class="text-3xl font-bold text-gray-900">Menu Manager</h1>
+				<p class="mt-2 text-sm text-gray-600">
+					Manage categories, items, orders & track sales at a glance.
+				</p>
+			</div>
+			<div class="flex space-x-4">
+				<button
+					class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+					<i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+					Add New Item
+				</button>
+				<button
+					class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-md shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+					<i data-lucide="download" class="w-4 h-4 mr-2"></i>
+					Export Data
+				</button>
+			</div>
+		</div>
+
+		<!-- Stats -->
+		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5 mb-8">
+			<!-- Total Categories -->
+			<div class="bg-white overflow-hidden shadow rounded-lg p-5 flex items-center">
+				<i data-lucide="grid" class="h-6 w-6 text-gray-400"></i>
+				<div class="ml-4">
+					<dt class="text-sm font-medium text-gray-500 truncate">Categories</dt>
+					<dd class="text-2xl font-semibold text-gray-900">8</dd>
+				</div>
+			</div>
+
+			<!-- Total Items -->
+			<div class="bg-white overflow-hidden shadow rounded-lg p-5 flex items-center">
+				<i data-lucide="box" class="h-6 w-6 text-gray-400"></i>
+				<div class="ml-4">
+					<dt class="text-sm font-medium text-gray-500 truncate">Total Dishes</dt>
+					<dd class="text-2xl font-semibold text-gray-900">148</dd>
+				</div>
+			</div>
+
+			<!-- Items On Sale -->
+			<div class="bg-white overflow-hidden shadow rounded-lg p-5 flex items-center">
+				<i data-lucide="tag" class="h-6 w-6 text-gray-400"></i>
+				<div class="ml-4">
+					<dt class="text-sm font-medium text-gray-500 truncate">On Sale</dt>
+					<dd class="text-2xl font-semibold text-gray-900">12</dd>
+				</div>
+			</div>
+
+			<!-- Active Orders -->
+			<div class="bg-white overflow-hidden shadow rounded-lg p-5 flex items-center">
+				<i data-lucide="shopping-cart" class="h-6 w-6 text-gray-400"></i>
+				<div class="ml-4">
+					<dt class="text-sm font-medium text-gray-500 truncate">Active Orders</dt>
+					<dd class="text-2xl font-semibold text-gray-900">36</dd>
+				</div>
+			</div>
+
+			<!-- Monthly Revenue -->
+			<div class="bg-white overflow-hidden shadow rounded-lg p-5 flex items-center">
+				<i data-lucide="dollar-sign" class="h-6 w-6 text-gray-400"></i>
+				<div class="ml-4">
+					<dt class="text-sm font-medium text-gray-500 truncate">Monthly Revenue</dt>
+					<dd class="text-2xl font-semibold text-gray-900">$23,400</dd>
+				</div>
+			</div>
+		</div>
+
+		<!-- Main Content -->
+		<div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+			<!-- Recent Activity -->
+			<div class="bg-white shadow rounded-lg">
+				<div class="px-6 py-5 border-b border-gray-200">
+					<h3 class="text-lg font-medium leading-6 text-gray-900">Recent Activity</h3>
+				</div>
+				<div class="divide-y divide-gray-200">
+					<div class="px-6 py-4 hover:bg-gray-50 flex items-center space-x-4 cursor-pointer transition">
+						<div class="h-8 w-8 rounded-full bg-primary-100 flex items-center justify-center">
+							<i data-lucide="plus" class="h-5 w-5 text-primary-600"></i>
+						</div>
+						<div class="flex-1 min-w-0">
+							<p class="text-sm font-medium text-gray-900">Added “Spicy Margarita” to Cocktail menu</p>
+							<p class="text-sm text-gray-500">Today, 11:24 AM</p>
+						</div>
+						<i data-lucide="chevron-right" class="h-5 w-5 text-gray-400"></i>
+					</div>
+				</div>
+				<div class="px-6 py-4 border-t border-gray-200">
+					<button class="text-sm font-medium text-primary-600 hover:text-primary-500">
+						View all activity
+					</button>
+				</div>
+			</div>
+
+			<!-- Quick Actions -->
+			<div class="space-y-6">
+				<!-- Menu Distribution -->
+				<div class="bg-white shadow rounded-lg">
+					<div class="px-6 py-5 border-b border-gray-200">
+						<h3 class="text-lg font-medium leading-6 text-gray-900">Menu Distribution</h3>
+					</div>
+					<div class="p-6 space-y-4">
+						<!-- Chart-like bars -->
+						<div class="flex justify-between items-center">
+							<span class="text-sm font-medium text-gray-500">Drinks</span>
+							<div class="flex items-center">
+								<span class="text-sm font-semibold text-gray-900 mr-2">45%</span>
+								<div class="w-24 h-2 bg-gray-200 rounded-full">
+									<div class="w-[45%] h-2 bg-primary-600 rounded-full"></div>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between items-center">
+							<span class="text-sm font-medium text-gray-500">Food</span>
+							<div class="flex items-center">
+								<span class="text-sm font-semibold text-gray-900 mr-2">35%</span>
+								<div class="w-24 h-2 bg-gray-200 rounded-full">
+									<div class="w-[35%] h-2 bg-primary-600 rounded-full"></div>
+								</div>
+							</div>
+						</div>
+						<div class="flex justify-between items-center">
+							<span class="text-sm font-medium text-gray-500">Desserts</span>
+							<div class="flex items-center">
+								<span class="text-sm font-semibold text-gray-900 mr-2">20%</span>
+								<div class="w-24 h-2 bg-gray-200 rounded-full">
+									<div class="w-[20%] h-2 bg-primary-600 rounded-full"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Quick Buttons -->
+				<div class="bg-white shadow rounded-lg">
+					<div class="px-6 py-5 border-b border-gray-200">
+						<h3 class="text-lg font-medium leading-6 text-gray-900">Quick Actions</h3>
+					</div>
+					<div class="p-6 space-y-4">
+						<button
+							class="w-full flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+							<i data-lucide="plus-circle" class="h-5 w-5 mr-3 text-gray-400"></i>
+							Add Category
+						</button>
+						<button
+							class="w-full flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500">
+							<i data-lucide="tag" class="h-5 w-5 mr-3 text-gray-400"></i>
+							Mark Item on Sale
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

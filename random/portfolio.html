@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Cornelius Okeke – Software Engineering Manager</title>
+	<style>
+		:root {
+			--bg: #f4f4f9;
+			--text: #1a1a1a;
+			--primary: #1e88e5;
+			--secondary: #555;
+			--card: #fff;
+			--accent: #e0e0e0;
+		}
+
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.6;
+		}
+
+		a {
+			color: var(--primary);
+			text-decoration: none;
+		}
+
+		.container {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 2rem 1rem;
+		}
+
+		.hero {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			padding: 3rem 1rem;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+		}
+
+		.hero img {
+			width: 150px;
+			height: 150px;
+			object-fit: cover;
+			border-radius: 50%;
+			border: 4px solid var(--primary);
+			margin-bottom: 1rem;
+		}
+
+		.hero h1 {
+			font-size: 2rem;
+			color: var(--primary);
+		}
+
+		.hero p {
+			color: var(--secondary);
+			font-size: 1rem;
+			max-width: 600px;
+		}
+
+		section {
+			margin-top: 3rem;
+		}
+
+		h2 {
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+			color: var(--primary);
+			border-bottom: 2px solid var(--accent);
+			padding-bottom: 0.5rem;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 1.5rem;
+		}
+
+		.card {
+			background: var(--card);
+			border-radius: 8px;
+			padding: 1.5rem;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+		}
+
+		.skills span {
+			display: inline-block;
+			background: var(--accent);
+			color: #333;
+			padding: 0.4rem 0.8rem;
+			margin: 0.3rem;
+			border-radius: 6px;
+			font-size: 0.9rem;
+		}
+
+		.timeline-entry {
+			margin-bottom: 1rem;
+		}
+
+		.timeline-entry strong {
+			color: var(--text);
+		}
+
+		footer {
+			text-align: center;
+			padding: 2rem 1rem;
+			color: var(--secondary);
+			font-size: 0.9rem;
+			margin-top: 4rem;
+		}
+
+		@media (max-width: 768px) {
+			.grid {
+				grid-template-columns: 1fr;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="hero">
+			<img src="https://via.placeholder.com/150" alt="Profile Photo" />
+			<h1>Cornelius Okeke</h1>
+			<p>Software Engineering Manager with 10+ years of experience leading teams, building scalable systems, and
+				aligning engineering with business goals.</p>
+		</div>
+
+		<section>
+			<h2>About Me</h2>
+			<p>I bring a blend of technical depth and people-first leadership. I've led distributed teams, modernised legacy
+				systems, built DevOps pipelines, and driven successful product launches across industries.</p>
+		</section>
+
+		<section>
+			<h2>Skills</h2>
+			<div class="skills">
+				<span>Software Architecture</span>
+				<span>Agile / Scrum</span>
+				<span>TypeScript</span>
+				<span>React</span>
+				<span>Node.js / NestJS</span>
+				<span>AWS</span>
+				<span>CI/CD</span>
+				<span>Mentorship</span>
+			</div>
+		</section>
+
+		<section>
+			<h2>Experience</h2>
+			<div class="grid">
+				<div class="card timeline-entry">
+					<strong>2021 – Present</strong><br />
+					<p><strong>Engineering Manager</strong><br />Global Tech Solutions</p>
+					<p>Led 3 cross-functional teams, modernised infrastructure with AWS, and launched features reaching 100k+
+						users.</p>
+				</div>
+				<div class="card timeline-entry">
+					<strong>2017 – 2021</strong><br />
+					<p><strong>Senior Software Engineer</strong><br />InnovateX</p>
+					<p>Architected scalable APIs, mentored junior devs, and introduced CI/CD workflows using GitHub Actions and
+						Docker.</p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>Selected Projects</h2>
+			<div class="grid">
+				<div class="card">
+					<strong>Multi-Tenant SaaS Platform</strong>
+					<p>Designed and led implementation using NestJS, PostgreSQL, and AWS S3, serving multiple enterprise clients.
+					</p>
+				</div>
+				<div class="card">
+					<strong>CI/CD Automation</strong>
+					<p>Reduced deployment cycles by 80% through full pipeline automation across staging and production
+						environments.</p>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<h2>Contact</h2>
+			<p>Email: <a href="mailto:cornelius.okeke@example.com">cornelius.okeke@example.com</a></p>
+			<p>GitHub: <a href="https://github.com/corneliusokeke" target="_blank">github.com/corneliusokeke</a></p>
+			<p>LinkedIn: <a href="https://linkedin.com/in/corneliusokeke" target="_blank">linkedin.com/in/corneliusokeke</a>
+			</p>
+		</section>
+
+		<footer>
+			&copy; 2025 Cornelius Okeke. All rights reserved.
+		</footer>
+	</div>
+
+</body>
+
+</html>
