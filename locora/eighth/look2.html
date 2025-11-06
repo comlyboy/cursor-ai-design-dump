@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Menu</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						base: {
+							900: '#0B0F19',
+							800: '#0F1524',
+							700: '#111827',
+						},
+						brand: {
+							500: '#7C3AED',
+							400: '#8B5CF6',
+							300: '#A78BFA',
+						},
+					},
+					boxShadow: {
+						card: '0 10px 30px -10px rgba(0,0,0,0.35)',
+					},
+					backdropBlur: {
+						xs: '2px',
+					},
+				},
+			},
+		}
+	</script>
+	<style>
+		/* Subtle grid and glow background */
+		.bg-grid {
+			background-image:
+				radial-gradient(60rem 60rem at 120% -10%, rgba(124, 58, 237, .25), rgba(124, 58, 237, 0)),
+				radial-gradient(60rem 60rem at -20% 110%, rgba(99, 102, 241, .25), rgba(99, 102, 241, 0)),
+				linear-gradient(to bottom, rgba(255, 255, 255, .05), rgba(255, 255, 255, 0)),
+				linear-gradient(transparent 0, transparent calc(3rem - 1px), rgba(255, 255, 255, .06) calc(3rem - 1px)),
+				linear-gradient(90deg, transparent 0, transparent calc(3rem - 1px), rgba(255, 255, 255, .06) calc(3rem - 1px));
+			background-size: auto, auto, auto, 100% 3rem, 3rem 100%;
+			background-position: center;
+		}
+
+		/* Watermark using restaurant name */
+		.watermark::before {
+			content: attr(data-restaurant);
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			display: block;
+			font-weight: 800;
+			font-size: clamp(8rem, 18vw, 22rem);
+			letter-spacing: 0.05em;
+			line-height: 1;
+			text-transform: uppercase;
+			color: transparent;
+			-webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
+			text-stroke: 1px rgba(255, 255, 255, 0.06);
+			opacity: 0.3;
+			transform: rotate(-12deg) translateY(-10%);
+			transform-origin: center;
+			white-space: nowrap;
+			mix-blend-mode: overlay;
+			/* Center the text */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		@media (max-width: 640px) {
+			.watermark::before {
+				transform: rotate(-12deg) translateY(-20%);
+				opacity: 0.18;
+			}
+
+			/* Center header on mobile and reveal title */
+			header .h-16.items-center {
+				justify-content: center;
+			}
+
+			header .hidden.sm\:block {
+				display: block !important;
+				text-align: center;
+			}
+
+			/* Center category pills */
+			nav ul {
+				justify-content: center;
+			}
+
+			/* Center section headers and avoid wide spacing */
+			.flex.items-end.justify-between.mb-4 {
+				justify-content: center;
+				gap: .5rem;
+			}
+
+			.flex.items-end.justify-between.mb-4 h3 {
+				text-align: center;
+				width: 100%;
+			}
+
+			/* Card bodies centered; actions stacked with full-width buttons */
+			.group .p-4 {
+				text-align: center;
+			}
+
+			.group .p-4 .mt-4.flex {
+				flex-direction: column;
+				gap: .75rem;
+				align-items: stretch;
+			}
+
+			.group .p-4 .mt-4.flex button {
+				width: 100%;
+			}
+		}
+
+		/* Narrow container on mobile */
+		.container-narrow {}
+
+		@media (max-width: 640px) {
+			.container-narrow {
+				max-width: 28rem;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	</style>
+</head>
+
+<body class="min-h-screen bg-base-900 text-white bg-grid">
+	<div class="min-h-screen w-full flex items-center justify-center p-4">
+		<div
+			class="phone-frame relative w-[390px] max-w-full h-[780px] max-h-[90vh] rounded-[1.75rem] border border-white/10 bg-base-900/80 backdrop-blur overflow-hidden shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)] watermark"
+			data-restaurant="Tabul Styled Restaurant">
+			<main class="h-full overflow-y-auto px-4 py-4">
+				<!-- Restaurant Header -->
+				<section class="relative mb-4">
+					<div class="text-center">
+						<h2 class="text-xl font-bold tracking-tight">Tabul Styled Restaurant</h2>
+					</div>
+				</section>
+
+				<!-- Category Pills -->
+				<nav class="sticky top-0 z-30 -mx-4 px-4 py-3 backdrop-blur bg-base-900/60 border-y border-white/10">
+					<ul class="flex items-center justify-center gap-2 overflow-x-auto no-scrollbar">
+						<li><a href="#starters"
+								class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">All</a>
+						</li>
+						<li><a href="#starters"
+								class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Starters</a>
+						</li>
+						<li><a href="#mains"
+								class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Mains</a>
+						</li>
+						<li><a href="#drinks"
+								class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Drinks</a>
+						</li>
+						<li><a href="#desserts"
+								class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Desserts</a>
+						</li>
+						<li><a href="#specials"
+								class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Specials</a>
+						</li>
+					</ul>
+				</nav>
+
+				<!-- Sections -->
+				<section id="starters" class="mt-8">
+					<div class="flex items-end justify-center mb-4">
+						<h3 class="text-xl font-semibold tracking-tight">Starters</h3>
+						<a href="#" class="hidden text-sm text-brand-300 hover:text-brand-200">See all</a>
+					</div>
+					<div class="grid gap-2">
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🥗</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Garden Salad</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Crisp greens, cherry tomatoes, vinaigrette.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$7.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🧆</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Falafel Bites</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Herbed chickpeas, tahini sauce.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$6.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍞</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Garlic Bread</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Toasted baguette with herb butter.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$4.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍤</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Crispy Shrimp</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Tempura shrimp, citrus aioli.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$9.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+					</div>
+				</section>
+
+				<section id="mains" class="mt-10">
+					<div class="flex items-end justify-center mb-4">
+						<h3 class="text-xl font-semibold tracking-tight">Mains</h3>
+						<a href="#" class="hidden text-sm text-brand-300 hover:text-brand-200">See all</a>
+					</div>
+					<div class="grid gap-2">
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍝</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Truffle Pasta</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Creamy sauce, shaved truffle, parmesan.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$14.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍔</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Smash Burger</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Double patty, cheddar, house sauce.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$12.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🥘</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Herbed Chicken</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Roasted chicken, seasonal vegetables.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$15.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍛</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Curry Bowl</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Coconut curry, jasmine rice.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$13.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+					</div>
+				</section>
+
+				<section id="drinks" class="mt-10">
+					<div class="flex items-end justify-center mb-4">
+						<h3 class="text-xl font-semibold tracking-tight">Drinks</h3>
+						<a href="#" class="hidden text-sm text-brand-300 hover:text-brand-200">See all</a>
+					</div>
+					<div class="grid gap-2">
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🥤</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Sparkling Berry</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Mixed berries, soda, mint.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$5.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">☕️</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Flat White</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Velvety espresso, steamed milk.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$4.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍹</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Citrus Cooler</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Orange, lime, soda.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$4.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🧋</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Boba Milk Tea</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Black tea, milk, tapioca.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$5.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+					</div>
+				</section>
+
+				<section id="desserts" class="mt-10">
+					<div class="flex items-end justify-center mb-4">
+						<h3 class="text-xl font-semibold tracking-tight">Desserts</h3>
+						<a href="#" class="hidden text-sm text-brand-300 hover:text-brand-200">See all</a>
+					</div>
+					<div class="grid gap-2">
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍰</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Cheesecake</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Vanilla bean, berry compote.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$6.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍮</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Crème Brûlée</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Silky custard, caramel top.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$6.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍨</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Gelato Trio</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Pistachio, chocolate, vanilla.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$5.50</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-colors p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🥧</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Apple Pie</h4>
+								<p class="mt-0.5 text-[13px] text-white/70 truncate">Cinnamon spiced, flaky crust.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$5.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+					</div>
+				</section>
+
+				<section id="specials" class="mt-10 mb-16">
+					<div class="flex items-end justify-center mb-4">
+						<h3 class="text-xl font-semibold tracking-tight">Chef Specials</h3>
+						<a href="#" class="hidden text-sm text-brand-300 hover:text-brand-200">See all</a>
+					</div>
+					<div class="grid gap-2">
+						<article
+							class="group flex items-center gap-3 rounded-xl border border-white/10 bg-gradient-to-br from-brand-500/10 to-brand-400/10 p-3">
+							<div class="h-12 w-12 rounded-lg bg-white/10 grid place-items-center text-2xl">🍣</div>
+							<div class="min-w-0 flex-1">
+								<h4 class="font-medium text-sm truncate">Omakase Platter</h4>
+								<p class="mt-0.5 text-[13px] text-white/80 truncate">Seasonal selection crafted by our chef. Limited
+									daily servings.</p>
+							</div>
+							<div class="flex flex-col items-end gap-2">
+								<span class="text-brand-300 font-semibold text-sm">$28.00</span>
+								<button
+									class="inline-flex items-center rounded-lg bg-brand-500 hover:bg-brand-400 px-2.5 py-1 text-xs font-medium">Add</button>
+							</div>
+						</article>
+					</div>
+				</section>
+			</main>
+
+			<footer class="border-t border-white/10 py-4 text-center text-[11px] text-white/60">
+				<div class="px-4">
+					© <span id="year"></span> Tabul Styled Restaurant
+				</div>
+			</footer>
+		</div>
+	</div>
+
+	<script>
+		// Sync footer year
+		document.getElementById('year').textContent = new Date().getFullYear()
+		// Optional: keep header titles and watermark in sync if edited
+		const frameEl = document.querySelector('.phone-frame')
+		const headings = document.querySelectorAll('h1, h2')
+		const current = frameEl?.getAttribute('data-restaurant')
+		headings.forEach(h => {
+			if (h.textContent.trim() === 'Tabul Styled Restaurant') {
+				h.textContent = current || h.textContent
+			}
+		})
+	</script>
+</body>
+
+</html

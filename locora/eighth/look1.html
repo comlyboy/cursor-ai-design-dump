@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              base: {
+                900: '#0B0F19',
+                800: '#0F1524',
+                700: '#111827',
+              },
+              brand: {
+                500: '#7C3AED',
+                400: '#8B5CF6',
+                300: '#A78BFA',
+              },
+            },
+            boxShadow: {
+              card: '0 10px 30px -10px rgba(0,0,0,0.35)',
+            },
+            backdropBlur: {
+              xs: '2px',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      /* Subtle grid and glow background */
+      .bg-grid {
+        background-image:
+          radial-gradient(60rem 60rem at 120% -10%, rgba(124, 58, 237, .25), rgba(124, 58, 237, 0)),
+          radial-gradient(60rem 60rem at -20% 110%, rgba(99, 102, 241, .25), rgba(99, 102, 241, 0)),
+          linear-gradient(to bottom, rgba(255,255,255,.05), rgba(255,255,255,0)),
+          linear-gradient(transparent 0, transparent calc(3rem - 1px), rgba(255,255,255,.06) calc(3rem - 1px)),
+          linear-gradient(90deg, transparent 0, transparent calc(3rem - 1px), rgba(255,255,255,.06) calc(3rem - 1px));
+        background-size: auto, auto, auto, 100% 3rem, 3rem 100%;
+        background-position: center;
+      }
+
+      /* Watermark using restaurant name */
+      .watermark::before {
+        content: attr(data-restaurant);
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        display: block;
+        font-weight: 800;
+        font-size: clamp(8rem, 18vw, 22rem);
+        letter-spacing: 0.05em;
+        line-height: 1;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+        text-stroke: 1px rgba(255,255,255,0.06);
+        opacity: 0.3;
+        transform: rotate(-12deg) translateY(-10%);
+        transform-origin: center;
+        white-space: nowrap;
+        mix-blend-mode: overlay;
+        /* Center the text */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @media (max-width: 640px) {
+        .watermark::before {
+          transform: rotate(-12deg) translateY(-20%);
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-base-900 text-white bg-grid watermark" data-restaurant="Tabul Styled Restaurant">
+    <!-- Top Bar -->
+    <header class="sticky top-0 z-40 backdrop-blur bg-base-900/60 border-b border-white/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-brand-400 to-brand-500 shadow-card grid place-items-center">
+              <span class="text-base font-semibold">M</span>
+            </div>
+            <div class="hidden sm:block">
+              <h1 class="text-lg font-semibold tracking-tight">Tabul Styled Restaurant</h1>
+              <p class="text-xs text-white/60 -mt-0.5">View-only menu</p>
+            </div>
+          </div>
+
+          <div class="flex-1 max-w-xl mx-4 hidden md:block">
+            <label class="relative block">
+              <span class="sr-only">Search</span>
+              <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-white/50">
+                <!-- magnifier -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M11 19a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" /></svg>
+              </span>
+              <input type="text" placeholder="Search dishes, categories…" class="w-full rounded-xl bg-white/5 border border-white/10 pl-10 pr-3 py-2.5 text-sm placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-brand-400/60" />
+            </label>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-white/80">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+              View Only
+            </span>
+            <button class="hidden sm:inline-flex items-center gap-2 rounded-xl bg-white/10 hover:bg-white/15 border border-white/10 px-3 py-2 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18 8a3 3 0 1 0-6 0v1H9a4 4 0 0 0 0 8h3v1a3 3 0 1 0 6 0v-1h1a3 3 0 1 0 0-6h-1V9a3 3 0 0 0-3-3Z"/></svg>
+              Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Restaurant Header -->
+      <section class="relative mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Tabul Styled Restaurant</h2>
+            <p class="mt-1 text-white/70">Great taste, sleek dashboard-inspired menu.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1 rounded-xl bg-emerald-400/10 text-emerald-300 border border-emerald-300/20 px-3 py-1.5 text-xs">
+              Open Now
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-300"></span>
+            </span>
+            <span class="hidden sm:inline text-xs text-white/60">Est. 2025</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Pills -->
+      <nav class="sticky top-16 z-30 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-3 backdrop-blur bg-base-900/50 border-y border-white/10">
+        <ul class="flex items-center gap-2 overflow-x-auto no-scrollbar">
+          <li><a href="#starters" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">All</a></li>
+          <li><a href="#starters" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Starters</a></li>
+          <li><a href="#mains" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Mains</a></li>
+          <li><a href="#drinks" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Drinks</a></li>
+          <li><a href="#desserts" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Desserts</a></li>
+          <li><a href="#specials" class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-sm hover:bg-white/10">Specials</a></li>
+        </ul>
+      </nav>
+
+      <!-- Sections -->
+      <section id="starters" class="mt-8">
+        <div class="flex items-end justify-between mb-4">
+          <h3 class="text-xl font-semibold tracking-tight">Starters</h3>
+          <a href="#" class="text-sm text-brand-300 hover:text-brand-200">See all</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <!-- Card -->
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🥗</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Garden Salad</h4>
+              <p class="mt-1 text-sm text-white/70">Crisp greens, cherry tomatoes, vinaigrette.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$7.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">
+                  Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🧆</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Falafel Bites</h4>
+              <p class="mt-1 text-sm text-white/70">Herbed chickpeas, tahini sauce.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$6.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍞</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Garlic Bread</h4>
+              <p class="mt-1 text-sm text-white/70">Toasted baguette with herb butter.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$4.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍤</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Crispy Shrimp</h4>
+              <p class="mt-1 text-sm text-white/70">Tempura shrimp, citrus aioli.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$9.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="mains" class="mt-10">
+        <div class="flex items-end justify-between mb-4">
+          <h3 class="text-xl font-semibold tracking-tight">Mains</h3>
+          <a href="#" class="text-sm text-brand-300 hover:text-brand-200">See all</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍝</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Truffle Pasta</h4>
+              <p class="mt-1 text-sm text-white/70">Creamy sauce, shaved truffle, parmesan.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$14.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍔</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Smash Burger</h4>
+              <p class="mt-1 text-sm text-white/70">Double patty, cheddar, house sauce.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$12.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🥘</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Herbed Chicken</h4>
+              <p class="mt-1 text-sm text-white/70">Roasted chicken, seasonal vegetables.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$15.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍛</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Curry Bowl</h4>
+              <p class="mt-1 text-sm text-white/70">Coconut curry, jasmine rice.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$13.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="drinks" class="mt-10">
+        <div class="flex items-end justify-between mb-4">
+          <h3 class="text-xl font-semibold tracking-tight">Drinks</h3>
+          <a href="#" class="text-sm text-brand-300 hover:text-brand-200">See all</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🥤</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Sparkling Berry</h4>
+              <p class="mt-1 text-sm text-white/70">Mixed berries, soda, mint.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$5.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">☕️</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Flat White</h4>
+              <p class="mt-1 text-sm text-white/70">Velvety espresso, steamed milk.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$4.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍹</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Citrus Cooler</h4>
+              <p class="mt-1 text-sm text-white/70">Orange, lime, soda.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$4.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🧋</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Boba Milk Tea</h4>
+              <p class="mt-1 text-sm text-white/70">Black tea, milk, tapioca.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$5.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="desserts" class="mt-10">
+        <div class="flex items-end justify-between mb-4">
+          <h3 class="text-xl font-semibold tracking-tight">Desserts</h3>
+          <a href="#" class="text-sm text-brand-300 hover:text-brand-200">See all</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍰</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Cheesecake</h4>
+              <p class="mt-1 text-sm text-white/70">Vanilla bean, berry compote.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$6.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍮</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Crème Brûlée</h4>
+              <p class="mt-1 text-sm text-white/70">Silky custard, caramel top.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$6.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🍨</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Gelato Trio</h4>
+              <p class="mt-1 text-sm text-white/70">Pistachio, chocolate, vanilla.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$5.50</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+          <article class="group rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-shadow shadow-card overflow-hidden">
+            <div class="aspect-[16/10] bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+              <span class="text-5xl">🥧</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-semibold">Apple Pie</h4>
+              <p class="mt-1 text-sm text-white/70">Cinnamon spiced, flaky crust.</p>
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-brand-300 font-semibold">$5.00</span>
+                <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-3 py-1.5 text-sm font-medium">Add</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="specials" class="mt-10 mb-16">
+        <div class="flex items-end justify-between mb-4">
+          <h3 class="text-xl font-semibold tracking-tight">Chef Specials</h3>
+          <a href="#" class="text-sm text-brand-300 hover:text-brand-200">See all</a>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="col-span-full lg:col-span-2 rounded-2xl border border-white/10 bg-gradient-to-br from-brand-500/20 to-brand-400/10 backdrop-blur-sm shadow-card overflow-hidden">
+            <div class="grid grid-cols-1 md:grid-cols-2">
+              <div class="aspect-[16/10] md:aspect-auto bg-gradient-to-br from-white/10 to-white/0 grid place-items-center">
+                <span class="text-6xl">🍣</span>
+              </div>
+              <div class="p-6">
+                <h4 class="font-semibold text-2xl">Omakase Platter</h4>
+                <p class="mt-2 text-white/80">Seasonal selection crafted by our chef. Limited daily servings.</p>
+                <div class="mt-6 flex items-center justify-between">
+                  <span class="text-brand-300 font-semibold text-lg">$28.00</span>
+                  <button class="inline-flex items-center gap-1.5 rounded-xl bg-brand-500 hover:bg-brand-400 px-4 py-2 text-sm font-medium">Add</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 py-6 text-center text-xs text-white/60">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        © <span id="year"></span> Tabul Styled Restaurant — All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Sync footer year
+      document.getElementById('year').textContent = new Date().getFullYear()
+      // Optional: keep header titles and watermark in sync if edited
+      const bodyEl = document.body
+      const headings = document.querySelectorAll('h1, h2')
+      const current = bodyEl.getAttribute('data-restaurant')
+      headings.forEach(h => {
+        if (h.textContent.trim() === 'Tabul Styled Restaurant') {
+          h.textContent = current
+        }
+      })
+    </script>
+  </body>
+  </html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Hair Studio - Premium Beauty & Hair Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-white dark:bg-gray-900 transition-colors duration-300">
+    <!-- Header -->
+    <header class="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm z-50 border-b border-gray-200 dark:border-gray-700">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="sparkles" class="w-8 h-8 text-primary-600"></i>
+                    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Luxe Hair Studio</h1>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors">Home</a>
+                    <a href="#products" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors">Products</a>
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors">About</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-primary-600 transition-colors">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i data-lucide="sun" class="w-5 h-5 text-gray-600 dark:text-gray-400 hidden dark:block"></i>
+                        <i data-lucide="moon" class="w-5 h-5 text-gray-600 dark:text-gray-400 block dark:hidden"></i>
+                    </button>
+                    <button class="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+                        <i data-lucide="shopping-cart" class="w-5 h-5 text-gray-600 dark:text-gray-400"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-20 bg-gradient-to-br from-primary-50 to-pink-100 dark:from-gray-900 dark:to-gray-800">
+        <div class="container mx-auto px-4 py-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                        Transform Your Hair with 
+                        <span class="text-primary-600">Premium Care</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                        Discover our curated collection of professional hair care products designed to give you salon-quality results at home.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center">
+                            <i data-lucide="shopping-bag" class="w-5 h-5 mr-2"></i>
+                            Shop Now
+                        </button>
+                        <a href="https://wa.me/1234567890?text=Hi! I'm interested in your hair products" 
+                           class="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center">
+                            <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+                            WhatsApp Us
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8">
+                        <div class="aspect-square bg-gradient-to-br from-primary-100 to-pink-200 dark:from-gray-700 dark:to-gray-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="sparkles" class="w-24 h-24 text-primary-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Premium Products</h3>
+                <p class="text-xl text-gray-600 dark:text-gray-300">Professional-grade hair care for every hair type</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer product-card" 
+                     data-product='{"name": "Hydrating Shampoo", "price": "$29.99", "description": "Deeply nourishing shampoo with argan oil and keratin for silky, manageable hair.", "image": "shampoo", "ingredients": ["Argan Oil", "Keratin", "Vitamin E", "Natural Extracts"]}'>
+                    <div class="aspect-square bg-gradient-to-br from-blue-100 to-blue-200 dark:from-blue-900 dark:to-blue-800 rounded-t-xl flex items-center justify-center">
+                        <i data-lucide="droplets" class="w-16 h-16 text-blue-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Hydrating Shampoo</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Deeply nourishing shampoo with argan oil and keratin</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary-600">$29.99</span>
+                            <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer product-card"
+                     data-product='{"name": "Repair Conditioner", "price": "$34.99", "description": "Intensive repair conditioner that restores damaged hair and prevents breakage.", "image": "conditioner", "ingredients": ["Shea Butter", "Coconut Oil", "Biotin", "Protein Complex"]}'>
+                    <div class="aspect-square bg-gradient-to-br from-green-100 to-green-200 dark:from-green-900 dark:to-green-800 rounded-t-xl flex items-center justify-center">
+                        <i data-lucide="leaf" class="w-16 h-16 text-green-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Repair Conditioner</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Intensive repair conditioner for damaged hair</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary-600">$34.99</span>
+                            <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer product-card"
+                     data-product='{"name": "Heat Protectant Spray", "price": "$24.99", "description": "Lightweight heat protectant that shields hair from styling damage up to 450°F.", "image": "spray", "ingredients": ["Silicone", "UV Protection", "Thermal Shield", "Natural Oils"]}'>
+                    <div class="aspect-square bg-gradient-to-br from-purple-100 to-purple-200 dark:from-purple-900 dark:to-purple-800 rounded-t-xl flex items-center justify-center">
+                        <i data-lucide="zap" class="w-16 h-16 text-purple-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Heat Protectant Spray</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Lightweight protection from styling damage</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary-600">$24.99</span>
+                            <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer product-card"
+                     data-product='{"name": "Hair Oil Treatment", "price": "$39.99", "description": "Luxurious hair oil with Moroccan argan oil for ultimate shine and softness.", "image": "oil", "ingredients": ["Moroccan Argan Oil", "Jojoba Oil", "Vitamin E", "Rosehip Oil"]}'>
+                    <div class="aspect-square bg-gradient-to-br from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 rounded-t-xl flex items-center justify-center">
+                        <i data-lucide="gem" class="w-16 h-16 text-yellow-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Hair Oil Treatment</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Luxurious oil for ultimate shine and softness</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary-600">$39.99</span>
+                            <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer product-card"
+                     data-product='{"name": "Volumizing Mousse", "price": "$27.99", "description": "Lightweight mousse that adds volume and body without weighing hair down.", "image": "mousse", "ingredients": ["Polymer Complex", "Natural Proteins", "Volume Boosters", "Light Hold"]}'>
+                    <div class="aspect-square bg-gradient-to-br from-pink-100 to-pink-200 dark:from-pink-900 dark:to-pink-800 rounded-t-xl flex items-center justify-center">
+                        <i data-lucide="wind" class="w-16 h-16 text-pink-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Volumizing Mousse</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Lightweight mousse for added volume and body</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary-600">$27.99</span>
+                            <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer product-card"
+                     data-product='{"name": "Color Protection Mask", "price": "$44.99", "description": "Weekly treatment mask that preserves color vibrancy and prevents fading.", "image": "mask", "ingredients": ["Color Lock Technology", "UV Filters", "Moisturizing Agents", "Color Enhancers"]}'>
+                    <div class="aspect-square bg-gradient-to-br from-indigo-100 to-indigo-200 dark:from-indigo-900 dark:to-indigo-800 rounded-t-xl flex items-center justify-center">
+                        <i data-lucide="shield" class="w-16 h-16 text-indigo-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Color Protection Mask</h4>
+                        <p class="text-gray-600 dark:text-gray-300 mb-4">Weekly treatment to preserve color vibrancy</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-2xl font-bold text-primary-600">$44.99</span>
+                            <button class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">About Luxe Hair Studio</h3>
+                    <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+                        We're passionate about bringing salon-quality hair care products directly to your home. 
+                        Our carefully curated collection features only the finest ingredients and latest innovations in hair care technology.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Professional-grade ingredients</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Cruelty-free and sustainable</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-green-600"></i>
+                            <span class="text-gray-700 dark:text-gray-300">Expert recommendations</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-xl p-8">
+                    <div class="aspect-square bg-gradient-to-br from-primary-100 to-pink-200 dark:from-gray-700 dark:to-gray-600 rounded-xl flex items-center justify-center">
+                        <i data-lucide="heart" class="w-24 h-24 text-primary-600"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold text-gray-900 dark:text-white mb-6">Get in Touch</h3>
+            <p class="text-xl text-gray-600 dark:text-gray-300 mb-8">
+                Have questions about our products? Need personalized recommendations? We're here to help!
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/1234567890?text=Hi! I need help choosing the right hair products" 
+                   class="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center">
+                    <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+                    WhatsApp Support
+                </a>
+                <a href="mailto:info@luxehairstudio.com" 
+                   class="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center">
+                    <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                    Email Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 dark:bg-black text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-primary-400"></i>
+                        <h4 class="text-xl font-bold">Luxe Hair Studio</h4>
+                    </div>
+                    <p class="text-gray-400">Premium hair care products for salon-quality results at home.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Quick Links</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#products" class="hover:text-white transition-colors">Products</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Support</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">FAQ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Returns</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Size Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold mb-4">Connect</h5>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Luxe Hair Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <h3 id="modal-title" class="text-2xl font-bold text-gray-900 dark:text-white"></h3>
+                    <button id="close-modal" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        <i data-lucide="x" class="w-6 h-6"></i>
+                    </button>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="aspect-square bg-gradient-to-br from-primary-100 to-pink-200 dark:from-gray-700 dark:to-gray-600 rounded-xl flex items-center justify-center">
+                        <i id="modal-icon" data-lucide="sparkles" class="w-24 h-24 text-primary-600"></i>
+                    </div>
+                    
+                    <div>
+                        <p id="modal-description" class="text-gray-600 dark:text-gray-300 mb-6"></p>
+                        
+                        <div class="mb-6">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-3">Key Ingredients:</h4>
+                            <ul id="modal-ingredients" class="space-y-2"></ul>
+                        </div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <span id="modal-price" class="text-3xl font-bold text-primary-600"></span>
+                            <div class="flex space-x-2">
+                                <button class="bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                                    <i data-lucide="heart" class="w-4 h-4"></i>
+                                </button>
+                                <button class="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <a href="https://wa.me/1234567890?text=Hi! I'm interested in this product:" 
+                           class="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center">
+                            <i data-lucide="message-circle" class="w-5 h-5 mr-2"></i>
+                            Order via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', currentTheme === 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const newTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Product modal functionality
+        const productCards = document.querySelectorAll('.product-card');
+        const modal = document.getElementById('product-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalPrice = document.getElementById('modal-price');
+        const modalIcon = document.getElementById('modal-icon');
+        const modalIngredients = document.getElementById('modal-ingredients');
+
+        // Icon mapping for products
+        const iconMap = {
+            'shampoo': 'droplets',
+            'conditioner': 'leaf',
+            'spray': 'zap',
+            'oil': 'gem',
+            'mousse': 'wind',
+            'mask': 'shield'
+        };
+
+        productCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const productData = JSON.parse(card.dataset.product);
+                
+                modalTitle.textContent = productData.name;
+                modalDescription.textContent = productData.description;
+                modalPrice.textContent = productData.price;
+                
+                // Set icon
+                const iconName = iconMap[productData.image] || 'sparkles';
+                modalIcon.setAttribute('data-lucide', iconName);
+                
+                // Set ingredients
+                modalIngredients.innerHTML = '';
+                productData.ingredients.forEach(ingredient => {
+                    const li = document.createElement('li');
+                    li.className = 'flex items-center space-x-2 text-gray-600 dark:text-gray-300';
+                    li.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-green-600"></i><span>${ingredient}</span>`;
+                    modalIngredients.appendChild(li);
+                });
+                
+                // Re-initialize icons in modal
+                lucide.createIcons();
+                
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
