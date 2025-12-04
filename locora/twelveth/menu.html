@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Plate.io</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            200: '#dde5ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        neon: {
+                            500: '#22d3ee',
+                            600: '#06b6d4',
+                            700: '#0891b2',
+                        }
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background: radial-gradient(ellipse at top, #1d2333 0%, #0f172a 40%, #050815 100%);
+            background-attachment: fixed;
+        }
+
+        .grid-background {
+            background-image:
+                linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.75));
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(148, 163, 184, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(24px) saturate(180%);
+        }
+
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .menu-item-card {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.6));
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .menu-item-card:hover {
+            border-color: rgba(34, 211, 238, 0.5);
+            box-shadow: 0 4px 20px rgba(34, 211, 238, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .category-tab {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .category-tab.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
+            border-color: rgba(34, 211, 238, 0.5);
+            box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #6366f1 0%, #22d3ee 50%, #8b5cf6 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease infinite;
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add:hover {
+            box-shadow: 0 6px 30px rgba(99, 102, 241, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            transform: scale(1.05);
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #818cf8 0%, #22d3ee 50%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .orb {
+            filter: blur(60px);
+            opacity: 0.4;
+            animation: float 25s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Mobile-first: Stack everything vertically on small screens */
+        @media (min-width: 640px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .menu-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen grid-background text-slate-100 antialiased pb-20">
+    <!-- Animated Background Orbs -->
+    <div class="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+        <div class="orb absolute -top-32 -left-32 h-96 w-96 bg-primary-500/50 rounded-full"></div>
+        <div class="orb absolute top-1/4 -right-24 h-[28rem] w-[28rem] bg-neon-500/40 rounded-full" style="animation-delay: -8s;"></div>
+        <div class="orb absolute bottom-0 left-1/3 h-[32rem] w-[32rem] bg-violet-500/30 rounded-full" style="animation-delay: -15s;"></div>
+    </div>
+
+    <!-- Sticky Header -->
+    <header class="sticky-header glass-nav mb-4">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 ring-1 ring-slate-700/50 shadow-lg shadow-primary-500/20">
+                        <span class="absolute inset-0 rounded-xl bg-gradient-to-br from-primary-500/30 via-neon-500/20 to-violet-500/30 blur-md"></span>
+                        <i data-lucide="sparkles" class="relative h-4 w-4 text-neon-400"></i>
+                    </div>
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-base font-bold tracking-tight gradient-text">Plate.io</span>
+                        <span class="text-[9px] uppercase tracking-[0.2em] text-slate-400 font-medium">Restaurant Menu OS</span>
+                    </div>
+                </div>
+                <button class="p-2 text-slate-400 hover:text-cyan-400 transition-colors">
+                    <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Restaurant Info -->
+    <div class="max-w-7xl mx-auto px-4 mb-6">
+        <div class="glass-panel rounded-2xl p-4 sm:p-6 neon-border">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-cyan-500/30 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="store" class="w-8 h-8 sm:w-10 sm:h-10 text-cyan-400"></i>
+                </div>
+                <div class="flex-1">
+                    <h1 class="text-xl sm:text-2xl font-bold text-white mb-1">The Gourmet Kitchen</h1>
+                    <p class="text-sm sm:text-base text-slate-400 mb-2">Fine dining experience</p>
+                    <div class="flex flex-wrap items-center gap-3 text-xs sm:text-sm text-slate-500">
+                        <span class="flex items-center">
+                            <i data-lucide="map-pin" class="w-3 h-3 mr-1"></i>
+                            123 Main St
+                        </span>
+                        <span class="flex items-center">
+                            <i data-lucide="clock" class="w-3 h-3 mr-1"></i>
+                            Open until 10 PM
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="max-w-7xl mx-auto px-4 mb-6">
+        <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <button class="category-tab active px-4 py-2 rounded-lg text-sm font-medium text-white whitespace-nowrap">
+                All
+            </button>
+            <button class="category-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 whitespace-nowrap">
+                Appetizers
+            </button>
+            <button class="category-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 whitespace-nowrap">
+                Main Course
+            </button>
+            <button class="category-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 whitespace-nowrap">
+                Desserts
+            </button>
+            <button class="category-tab px-4 py-2 rounded-lg text-sm font-medium text-slate-300 whitespace-nowrap">
+                Beverages
+            </button>
+        </div>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="menu-grid grid grid-cols-1 gap-4 sm:gap-6">
+            <!-- Menu Item 1 -->
+            <div class="menu-item-card rounded-xl p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="w-full sm:w-24 sm:h-24 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0 h-32 sm:h-auto">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-10 sm:h-10 text-cyan-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-white">Margherita Pizza</h3>
+                            <span class="text-lg font-bold text-cyan-400 ml-2">$14.99</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Fresh mozzarella, tomatoes, and basil on our signature crust</p>
+                        <button class="btn-add w-full sm:w-auto px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Item 2 -->
+            <div class="menu-item-card rounded-xl p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="w-full sm:w-24 sm:h-24 rounded-lg bg-gradient-to-br from-purple-500/20 to-indigo-500/20 flex items-center justify-center flex-shrink-0 h-32 sm:h-auto">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-10 sm:h-10 text-purple-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-white">Classic Burger</h3>
+                            <span class="text-lg font-bold text-cyan-400 ml-2">$12.99</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Angus beef patty with lettuce, tomato, and special sauce</p>
+                        <button class="btn-add w-full sm:w-auto px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Item 3 -->
+            <div class="menu-item-card rounded-xl p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="w-full sm:w-24 sm:h-24 rounded-lg bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 h-32 sm:h-auto">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-10 sm:h-10 text-indigo-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-white">Caesar Salad</h3>
+                            <span class="text-lg font-bold text-cyan-400 ml-2">$9.99</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Crisp romaine lettuce with Caesar dressing and parmesan</p>
+                        <button class="btn-add w-full sm:w-auto px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Item 4 -->
+            <div class="menu-item-card rounded-xl p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="w-full sm:w-24 sm:h-24 rounded-lg bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center flex-shrink-0 h-32 sm:h-auto">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-10 sm:h-10 text-cyan-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-white">Chocolate Cake</h3>
+                            <span class="text-lg font-bold text-cyan-400 ml-2">$7.99</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Rich chocolate cake with vanilla frosting</p>
+                        <button class="btn-add w-full sm:w-auto px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Item 5 -->
+            <div class="menu-item-card rounded-xl p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="w-full sm:w-24 sm:h-24 rounded-lg bg-gradient-to-br from-purple-500/20 to-indigo-500/20 flex items-center justify-center flex-shrink-0 h-32 sm:h-auto">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-10 sm:h-10 text-purple-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-white">Pasta Carbonara</h3>
+                            <span class="text-lg font-bold text-cyan-400 ml-2">$16.99</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Creamy pasta with bacon and parmesan cheese</p>
+                        <button class="btn-add w-full sm:w-auto px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Item 6 -->
+            <div class="menu-item-card rounded-xl p-4 sm:p-6">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="w-full sm:w-24 sm:h-24 rounded-lg bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 h-32 sm:h-auto">
+                        <i data-lucide="utensils-crossed" class="w-12 h-12 sm:w-10 sm:h-10 text-indigo-400"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-start justify-between mb-2">
+                            <h3 class="text-lg font-semibold text-white">Iced Coffee</h3>
+                            <span class="text-lg font-bold text-cyan-400 ml-2">$4.99</span>
+                        </div>
+                        <p class="text-sm text-slate-400 mb-3">Cold brew coffee with ice and cream</p>
+                        <button class="btn-add w-full sm:w-auto px-4 py-2 rounded-lg text-sm font-medium text-white flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4 mr-2"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cart Button (Mobile) -->
+    <div class="fixed bottom-4 right-4 sm:hidden z-50">
+        <button class="btn-add w-14 h-14 rounded-full flex items-center justify-center shadow-lg">
+            <i data-lucide="shopping-cart" class="w-6 h-6 text-white"></i>
+            <span class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-xs text-white">3</span>
+        </button>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        
+        // Category tab switching
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.category-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+

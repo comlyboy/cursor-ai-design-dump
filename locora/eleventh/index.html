@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plate.io - Smart Restaurant Menu OS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f5f7ff',
+                            100: '#ebf0ff',
+                            200: '#dde5ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                        },
+                        neon: {
+                            500: '#22d3ee',
+                            600: '#06b6d4',
+                            700: '#0891b2',
+                        }
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background: radial-gradient(circle at top, #1d2333 0, #050815 45%, #020617 100%);
+        }
+
+        .grid-background {
+            background-image:
+                linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .glass-panel {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7));
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow:
+                0 20px 60px rgba(15, 23, 42, 0.8),
+                0 0 0 1px rgba(148, 163, 184, 0.3);
+            backdrop-filter: blur(24px);
+        }
+
+        .orb {
+            filter: blur(40px);
+            opacity: 0.55;
+        }
+    </style>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="min-h-screen text-slate-100">
+    <!-- Top ambient orbs -->
+    <div class="pointer-events-none fixed inset-0 overflow-hidden -z-10">
+        <div class="orb absolute -top-24 -left-24 h-64 w-64 bg-primary-500/70 rounded-full"></div>
+        <div class="orb absolute top-1/4 -right-16 h-72 w-72 bg-neon-500/60 rounded-full"></div>
+        <div class="orb absolute bottom-0 left-1/3 h-80 w-80 bg-violet-500/40 rounded-full"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 border-b border-slate-800 bg-slate-950/70 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <a href="/" class="flex items-center space-x-3">
+                    <div class="relative flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-900 ring-1 ring-slate-700/80 shadow-lg shadow-primary-500/40">
+                        <span class="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary-500/40 via-violet-500/40 to-neon-500/40 blur-sm"></span>
+                        <i data-lucide="sparkles" class="relative h-5 w-5 text-neon-500"></i>
+                    </div>
+                    <div class="flex flex-col leading-tight">
+                        <span class="text-lg font-semibold tracking-tight bg-gradient-to-r from-primary-300 via-neon-300 to-violet-300 text-transparent bg-clip-text">
+                            Plate.io
+                        </span>
+                        <span class="text-[11px] uppercase tracking-[0.18em] text-slate-400">
+                            Restaurant Menu OS
+                        </span>
+                    </div>
+                </a>
+                <div class="hidden md:flex items-center space-x-10 text-sm">
+                    <a href="#features" class="text-slate-300 hover:text-white transition-colors flex items-center gap-2">
+                        <span>Features</span>
+                        <span class="h-px w-5 bg-gradient-to-r from-slate-500 to-transparent"></span>
+                    </a>
+                    <a href="#pricing" class="text-slate-300 hover:text-white transition-colors flex items-center gap-2">
+                        <span>Pricing</span>
+                        <span class="h-px w-5 bg-gradient-to-r from-slate-500 to-transparent"></span>
+                    </a>
+                    <a href="login.html" class="text-slate-300 hover:text-white transition-colors">
+                        Login
+                    </a>
+                    <a href="signup.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-primary-500 via-neon-500 to-violet-500 text-slate-950 shadow-lg shadow-primary-500/40 hover:shadow-neon-500/40 hover:brightness-110 transition-all">
+                        <span>Launch Console</span>
+                        <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative overflow-hidden">
+        <section class="grid-background pt-28 sm:pt-32 pb-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] gap-12 lg:gap-16 items-center">
+                    <!-- Hero copy -->
+                    <div class="space-y-8">
+                        <div class="inline-flex items-center gap-2 rounded-full border border-slate-700/80 bg-slate-950/70 px-3 py-1 text-[11px] font-medium text-slate-300 shadow-sm shadow-slate-900/80">
+                            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-slate-900">
+                                <i data-lucide="radar" class="h-3 w-3 text-neon-400"></i>
+                            </span>
+                            <span class="uppercase tracking-[0.18em] text-xs">AI‑native menu control surface</span>
+                        </div>
+                        <div>
+                            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-slate-50">
+                                Orchestrate your
+                                <span class="block mt-2 bg-gradient-to-r from-primary-300 via-neon-300 to-violet-300 text-transparent bg-clip-text">
+                                    restaurant menu in real‑time
+                                </span>
+                            </h1>
+                            <p class="mt-5 max-w-xl text-sm sm:text-base text-slate-300">
+                                Plate.io is a futuristic control center for restaurants, blending live menu orchestration,
+                                demand‑aware pricing, and deep analytics into a single holographic‑style console.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                            <a href="signup.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-slate-50 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-primary-500/40 hover:bg-white transition">
+                                <i data-lucide="flashlight" class="h-4 w-4"></i>
+                                <span>Start free for 14 days</span>
+                                <span class="h-px w-6 bg-gradient-to-r from-slate-900 to-slate-500"></span>
+                            </a>
+                            <button class="inline-flex items-center gap-2 rounded-full border border-slate-700/80 bg-slate-900/60 px-5 py-3 text-sm font-medium text-slate-200 hover:border-neon-500/70 hover:text-neon-100 transition">
+                                <i data-lucide="play-circle" class="h-4 w-4 text-neon-400"></i>
+                                <span>Watch live console demo</span>
+                            </button>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs text-slate-400">
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="shield-check" class="h-3.5 w-3.5 text-primary-300"></i>
+                                <span>Enterprise‑grade security</span>
+                            </div>
+                            <span class="h-px w-5 bg-slate-700"></span>
+                            <div class="flex items-center gap-2">
+                                <i data-lucide="rocket" class="h-3.5 w-3.5 text-neon-400"></i>
+                                <span>Deploy across all locations in hours</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Futuristic console panel -->
+                    <div class="relative">
+                        <div class="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-primary-500/20 via-neon-500/10 to-transparent blur-3xl"></div>
+                        <div class="glass-panel rounded-3xl p-5 sm:p-6 lg:p-7 relative overflow-hidden">
+                            <div class="absolute -top-16 -right-28 h-48 w-48 bg-gradient-to-br from-neon-500/50 to-violet-500/50 opacity-40 rounded-full blur-3xl"></div>
+                            <div class="absolute -bottom-12 -left-20 h-44 w-44 bg-gradient-to-tr from-primary-500/50 to-sky-500/40 opacity-50 rounded-full blur-3xl"></div>
+
+                            <div class="flex items-center justify-between mb-5">
+                                <div class="flex items-center gap-2 text-xs text-slate-300">
+                                    <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.7)]"></span>
+                                    <span class="uppercase tracking-[0.16em] text-[10px]">Live menu mesh</span>
+                                </div>
+                                <div class="flex gap-1.5">
+                                    <span class="h-1.5 w-6 rounded-full bg-gradient-to-r from-primary-400 to-neon-400"></span>
+                                    <span class="h-1.5 w-6 rounded-full bg-slate-700"></span>
+                                    <span class="h-1.5 w-6 rounded-full bg-slate-800"></span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="rounded-2xl border border-slate-700/70 bg-slate-900/70 p-3 space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800">
+                                                <i data-lucide="panels-top-left" class="h-3.5 w-3.5 text-primary-300"></i>
+                                            </span>
+                                            <span class="text-[11px] font-medium text-slate-200">Menu sync</span>
+                                        </div>
+                                        <span class="text-[10px] text-emerald-400 flex items-center gap-1">
+                                            <i data-lucide="activity" class="h-3 w-3"></i>
+                                            Live
+                                        </span>
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <div class="flex justify-between text-[11px] text-slate-400">
+                                            <span>Locations</span>
+                                            <span class="text-slate-200">18</span>
+                                        </div>
+                                        <div class="flex justify-between text-[11px] text-slate-400">
+                                            <span>Menus in sync</span>
+                                            <span class="text-slate-200">142</span>
+                                        </div>
+                                        <div class="mt-2 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                                            <div class="h-full w-3/4 bg-gradient-to-r from-primary-400 via-neon-400 to-emerald-400"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-2xl border border-slate-700/70 bg-slate-900/70 p-3 space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-800">
+                                                <i data-lucide="radar" class="h-3.5 w-3.5 text-neon-300"></i>
+                                            </span>
+                                            <span class="text-[11px] font-medium text-slate-200">Demand radar</span>
+                                        </div>
+                                        <span class="text-[10px] text-slate-400">Next 60 min</span>
+                                    </div>
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <div class="rounded-xl bg-gradient-to-b from-emerald-400/30 to-emerald-500/5 border border-emerald-400/40 p-2">
+                                            <p class="text-[10px] text-emerald-100">+18%</p>
+                                            <p class="mt-1 text-[9px] text-emerald-200/90">Starters</p>
+                                        </div>
+                                        <div class="rounded-xl bg-gradient-to-b from-primary-400/30 to-primary-500/5 border border-primary-400/40 p-2">
+                                            <p class="text-[10px] text-primary-100">+32%</p>
+                                            <p class="mt-1 text-[9px] text-primary-100/90">Mains</p>
+                                        </div>
+                                        <div class="rounded-xl bg-gradient-to-b from-sky-400/30 to-sky-500/5 border border-sky-400/40 p-2">
+                                            <p class="text-[10px] text-sky-100">+9%</p>
+                                            <p class="mt-1 text-[9px] text-sky-100/90">Drinks</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 grid grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] gap-3 text-[11px] text-slate-200">
+                                <div class="rounded-2xl border border-slate-700/80 bg-slate-900/80 p-3 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="line-chart" class="h-3.5 w-3.5 text-primary-300"></i>
+                                            <span class="font-medium">Today’s performance</span>
+                                        </div>
+                                        <span class="text-[10px] text-slate-400">vs. last week</span>
+                                    </div>
+                                    <div class="flex items-end gap-1.5 h-16">
+                                        <div class="w-2 rounded-full bg-slate-800">
+                                            <div class="h-2/5 w-full rounded-full bg-gradient-to-t from-slate-700 to-slate-600"></div>
+                                        </div>
+                                        <div class="w-2 rounded-full bg-slate-800">
+                                            <div class="h-3/5 w-full rounded-full bg-gradient-to-t from-primary-500 to-primary-300"></div>
+                                        </div>
+                                        <div class="w-2 rounded-full bg-slate-800">
+                                            <div class="h-4/5 w-full rounded-full bg-gradient-to-t from-neon-500 to-neon-300"></div>
+                                        </div>
+                                        <div class="w-2 rounded-full bg-slate-800">
+                                            <div class="h-2/3 w-full rounded-full bg-gradient-to-t from-violet-500 to-violet-300"></div>
+                                        </div>
+                                        <div class="w-2 rounded-full bg-slate-800">
+                                            <div class="h-3/4 w-full rounded-full bg-gradient-to-t from-emerald-500 to-emerald-300"></div>
+                                        </div>
+                                        <div class="flex-1"></div>
+                                    </div>
+                                    <div class="flex items-center justify-between text-[10px] text-slate-400">
+                                        <span>Upsell conversion</span>
+                                        <span class="text-emerald-300 font-medium">+24.3%</span>
+                                    </div>
+                                </div>
+                                <div class="rounded-2xl border border-slate-700/80 bg-slate-900/80 p-3 flex flex-col gap-2">
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <i data-lucide="qr-code" class="h-3.5 w-3.5 text-neon-300"></i>
+                                            <span class="font-medium">QR mesh</span>
+                                        </div>
+                                        <span class="text-[10px] text-slate-400">Latency &lt; 90ms</span>
+                                    </div>
+                                    <div class="mt-2 grid grid-cols-2 gap-2 text-[10px]">
+                                        <div class="space-y-1">
+                                            <p class="text-slate-400">Scans last hour</p>
+                                            <p class="text-base font-semibold text-slate-50">1,284</p>
+                                        </div>
+                                        <div class="space-y-1">
+                                            <p class="text-slate-400">Active tables</p>
+                                            <p class="text-base font-semibold text-slate-50">96</p>
+                                        </div>
+                                    </div>
+                                    <div class="mt-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+                                        <div class="h-full w-5/6 bg-gradient-to-r from-neon-400 via-sky-400 to-primary-400"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="relative py-16 sm:py-20 bg-gradient-to-b from-slate-950/0 via-slate-950/70 to-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+                    <div>
+                        <p class="text-xs font-semibold tracking-[0.28em] text-primary-300 uppercase">
+                            Core systems
+                        </p>
+                        <h2 class="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50">
+                            A control surface for every signal in your restaurant
+                        </h2>
+                        <p class="mt-3 max-w-2xl text-sm text-slate-300">
+                            Plate.io fuses menu management, live demand signals, and guest behavior data into one constantly
+                            updating interface so your team can steer the entire dining experience in real‑time.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 text-[11px] text-slate-400">
+                        <span class="inline-flex items-center gap-1 rounded-full border border-slate-700/80 px-3 py-1">
+                            <i data-lucide="cpu" class="h-3 w-3 text-primary-300"></i>
+                            Built on modern edge stack
+                        </span>
+                        <span class="inline-flex items-center gap-1 rounded-full border border-slate-700/80 px-3 py-1">
+                            <i data-lucide="wifi" class="h-3 w-3 text-neon-300"></i>
+                            Optimized for on‑prem networks
+                        </span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Feature 1 -->
+                    <article class="group relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950/60 via-slate-900/60 to-slate-950/80 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.9)] overflow-hidden">
+                        <div class="absolute -right-16 -top-20 h-40 w-40 rounded-full bg-gradient-to-br from-primary-500/30 to-neon-500/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 border border-slate-700 group-hover:border-primary-400/80 transition-colors">
+                                    <i data-lucide="wand-2" class="h-4.5 w-4.5 text-primary-300 group-hover:text-primary-200"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-50">Adaptive menu engine</h3>
+                                    <p class="text-xs text-slate-400">Real‑time menu orchestration</p>
+                                </div>
+                            </div>
+                            <span class="rounded-full bg-slate-900/80 px-2 py-1 text-[10px] text-slate-300 border border-slate-700">
+                                v3.2 • Stable
+                            </span>
+                        </div>
+                        <p class="text-sm text-slate-300">
+                            Update items, pricing, and layouts across every screen instantly with atomic changes that never
+                            break the experience mid‑service.
+                        </p>
+                        <div class="mt-4 grid grid-cols-2 gap-2 text-[11px] text-slate-300">
+                            <div class="rounded-xl border border-slate-800 bg-slate-950/70 px-3 py-2 flex items-center justify-between">
+                                <span>Change propagation</span>
+                                <span class="text-emerald-300 font-medium">320ms</span>
+                            </div>
+                            <div class="rounded-xl border border-slate-800 bg-slate-950/70 px-3 py-2 flex items-center justify-between">
+                                <span>Rollback window</span>
+                                <span class="text-slate-200">30 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Feature 2 -->
+                    <article class="group relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950/60 via-slate-900/60 to-slate-950/80 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.9)] overflow-hidden">
+                        <div class="absolute -left-16 -top-16 h-40 w-40 rounded-full bg-gradient-to-br from-violet-500/30 to-primary-500/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 border border-slate-700 group-hover:border-violet-400/80 transition-colors">
+                                    <i data-lucide="chart-no-axes-combined" class="h-4.5 w-4.5 text-violet-300 group-hover:text-violet-200"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-50">Insight fabric</h3>
+                                    <p class="text-xs text-slate-400">Signals, not spreadsheets</p>
+                                </div>
+                            </div>
+                            <span class="rounded-full bg-slate-900/80 px-2 py-1 text-[10px] text-slate-300 border border-slate-700">
+                                AI‑assisted
+                            </span>
+                        </div>
+                        <p class="text-sm text-slate-300">
+                            Understand which dishes drive margin, which pairings convert, and where guests drop off — without
+                            drowning in dashboards.
+                        </p>
+                        <ul class="mt-4 space-y-1.5 text-[11px] text-slate-300">
+                            <li class="flex items-center gap-2">
+                                <span class="h-1 w-3 rounded-full bg-gradient-to-r from-violet-400 to-primary-400"></span>
+                                <span>Heatmaps for every screen & time band</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="h-1 w-3 rounded-full bg-gradient-to-r from-primary-400 to-neon-400"></span>
+                                <span>Smart alerts when dishes underperform</span>
+                            </li>
+                        </ul>
+                    </article>
+
+                    <!-- Feature 3 -->
+                    <article class="group relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950/60 via-slate-900/60 to-slate-950/80 p-5 shadow-[0_18px_60px_rgba(15,23,42,0.9)] overflow-hidden">
+                        <div class="absolute -right-16 -bottom-16 h-40 w-40 rounded-full bg-gradient-to-br from-neon-500/30 to-emerald-500/30 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-900 border border-slate-700 group-hover:border-emerald-400/80 transition-colors">
+                                    <i data-lucide="qr-code" class="h-4.5 w-4.5 text-emerald-300 group-hover:text-emerald-200"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-semibold text-slate-50">QR mesh network</h3>
+                                    <p class="text-xs text-slate-400">Ultrafast, resilient access</p>
+                                </div>
+                            </div>
+                            <span class="rounded-full bg-slate-900/80 px-2 py-1 text-[10px] text-slate-300 border border-slate-700">
+                                99.98% uptime
+                            </span>
+                        </div>
+                        <p class="text-sm text-slate-300">
+                            Generate, track, and rotate QR codes mapped to tables, zones, or events with per‑session insights and
+                            no‑code experiments.
+                        </p>
+                        <div class="mt-4 flex items-center justify-between text-[11px] text-slate-300">
+                            <div class="flex flex-col gap-1">
+                                <span>Median scan → menu</span>
+                                <span class="text-emerald-300 font-semibold">84ms</span>
+                            </div>
+                            <div class="flex flex-col gap-1 text-right">
+                                <span>Conversion to order</span>
+                                <span class="text-emerald-300 font-semibold">+19% uplift</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="border-t border-slate-800 bg-gradient-to-r from-slate-950 via-slate-950 to-slate-950/90">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div>
+                    <p class="text-xs font-semibold tracking-[0.28em] text-primary-300 uppercase">
+                        Go live in one weekend
+                    </p>
+                    <h2 class="mt-3 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-50">
+                        Ready to plug Plate.io into your floor?
+                    </h2>
+                    <p class="mt-3 max-w-xl text-sm text-slate-300">
+                        Connect your POS, sync your existing menu, and ship your first fully‑managed digital menu experience
+                        without re‑platforming.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+                    <a href="signup.html" class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-primary-500 via-neon-500 to-violet-500 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-primary-500/40 hover:brightness-110 transition">
+                        <i data-lucide="sparkles" class="h-4 w-4"></i>
+                        <span>Get started instantly</span>
+                    </a>
+                    <a href="login.html" class="inline-flex items-center justify-center gap-2 rounded-full border border-slate-700 bg-slate-950/60 text-sm font-medium text-slate-200 px-5 py-3 hover:border-neon-500/80 hover:text-neon-100 transition">
+                        <i data-lucide="terminal" class="h-4 w-4"></i>
+                        <span>Sign in to console</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-sm">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2">
+                        <span class="flex h-7 w-7 items-center justify-center rounded-xl bg-slate-900 border border-slate-700">
+                            <i data-lucide="sparkle" class="h-4 w-4 text-primary-300"></i>
+                        </span>
+                        <span class="text-sm font-semibold text-slate-100">Plate.io</span>
+                    </div>
+                    <p class="text-xs text-slate-400">
+                        The operating system for futuristic restaurant menus, built for operators who think in real‑time.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-xs font-semibold text-slate-400 tracking-[0.2em] uppercase">Product</h3>
+                    <ul class="mt-3 space-y-2 text-xs text-slate-300">
+                        <li><a href="#features" class="hover:text-white">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white">Pricing</a></li>
+                        <li><a href="dashboard.html" class="hover:text-white">Live console</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xs font-semibold text-slate-400 tracking-[0.2em] uppercase">Company</h3>
+                    <ul class="mt-3 space-y-2 text-xs text-slate-300">
+                        <li><a href="#" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Partners</a></li>
+                        <li><a href="#" class="hover:text-white">Status</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xs font-semibold text-slate-400 tracking-[0.2em] uppercase">Legal</h3>
+                    <ul class="mt-3 space-y-2 text-xs text-slate-300">
+                        <li><a href="#" class="hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms</a></li>
+                        <li><a href="#" class="hover:text-white">Data processing</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+                <p>&copy; 2024 Plate.io. All rights reserved.</p>
+                <div class="flex items-center gap-3">
+                    <span class="flex items-center gap-1">
+                        <i data-lucide="globe-2" class="h-3.5 w-3.5"></i>
+                        <span>Global edge network</span>
+                    </span>
+                    <span class="h-px w-5 bg-slate-700"></span>
+                    <span class="flex items-center gap-1">
+                        <i data-lucide="lock" class="h-3.5 w-3.5"></i>
+                        <span>PCI‑ready</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

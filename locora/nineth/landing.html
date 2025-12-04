@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SavorStack – AI Menu Management Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+              body: ['Inter', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              base: {
+                900: '#05070F',
+                800: '#090E1A',
+                700: '#0F172A',
+              },
+              brand: {
+                600: '#7C3AED',
+                500: '#8B5CF6',
+                400: '#A78BFA',
+              },
+              accent: {
+                500: '#F97316',
+                400: '#FDA559',
+              },
+            },
+            dropShadow: {
+              glow: '0 0 35px rgba(139, 92, 246, .45)',
+            },
+            boxShadow: {
+              glass: '0 25px 80px -30px rgba(124, 58, 237, 0.55)',
+              card: '0 30px 60px -40px rgba(15, 23, 42, 0.8)',
+            },
+            backdropBlur: {
+              xs: '2px',
+            },
+            animation: {
+              blob: 'blob 12s infinite',
+              float: 'float 8s ease-in-out infinite',
+              marquee: 'marquee 20s linear infinite',
+            },
+            keyframes: {
+              blob: {
+                '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                '33%': { transform: 'translate(20px, -30px) scale(1.05)' },
+                '66%': { transform: 'translate(-10px, 20px) scale(0.97)' },
+                '100%': { transform: 'translate(0px, 0px) scale(1)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-18px)' },
+              },
+              marquee: {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(-50%)' },
+              },
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      .bg-grid {
+        background-image:
+          radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.25), transparent 25%),
+          radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.3), transparent 30%),
+          linear-gradient(transparent 0, transparent calc(3rem - 1px), rgba(148, 163, 184, 0.05) calc(3rem - 1px)),
+          linear-gradient(90deg, transparent 0, transparent calc(3rem - 1px), rgba(148, 163, 184, 0.05) calc(3rem - 1px));
+        background-size: auto, auto, 100% 3rem, 3rem 100%;
+        background-position: center;
+      }
+
+      .gradient-text {
+        background: linear-gradient(120deg, #8B5CF6 0%, #C084FC 40%, #F97316 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pulse 8s ease infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { filter: drop-shadow(0 0 25px rgba(167, 139, 250, 0.35)); }
+        50% { filter: drop-shadow(0 0 50px rgba(249, 115, 22, 0.35)); }
+      }
+
+      .glass {
+        background: linear-gradient(145deg, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.55));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+      }
+
+      .noise {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="400"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity=".12"/%3E%3C/svg%3E');
+        opacity: 0.35;
+        z-index: 0;
+      }
+
+      .hero-blob {
+        filter: blur(70px);
+        opacity: 0.55;
+      }
+
+      .card-clip {
+        clip-path: polygon(10% 0%, 100% 0, 90% 100%, 0% 100%);
+      }
+
+      .chart-bar {
+        animation: grow 1.6s ease-in-out forwards;
+        transform-origin: bottom;
+      }
+
+      @keyframes grow {
+        from { transform: scaleY(0); opacity: 0; }
+        to { transform: scaleY(1); opacity: 1; }
+      }
+    </style>
+  </head>
+  <body class="bg-base-900 text-white bg-grid overflow-x-hidden">
+    <div class="noise"></div>
+
+    <!-- Floating Background Elements -->
+    <div class="fixed inset-0 pointer-events-none">
+      <div class="absolute top-28 left-20 w-64 h-64 bg-brand-500/30 rounded-full mix-blend-screen animate-blob hero-blob"></div>
+      <div class="absolute bottom-16 right-32 w-80 h-80 bg-accent-500/25 rounded-full mix-blend-screen animate-blob hero-blob" style="animation-delay: -4s"></div>
+      <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.09) 1px, transparent 0); background-size: 110px 110px;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="fixed top-0 inset-x-0 z-40">
+      <div class="mx-auto max-w-7xl px-6 py-4">
+        <nav class="glass rounded-2xl px-6 py-3 flex items-center justify-between shadow-glass">
+          <div class="flex items-center space-x-3">
+            <div class="h-12 w-12 rounded-2xl bg-brand-500/20 flex items-center justify-center border border-brand-500/60">
+              <i data-lucide="chef-hat" class="w-6 h-6 text-brand-400"></i>
+            </div>
+            <div>
+              <p class="text-sm uppercase text-white/50 tracking-[0.35em] font-semibold">SavorStack</p>
+              <p class="text-lg font-semibold text-white/90 -mt-1 leading-tight">MenuOS for ambitious teams</p>
+            </div>
+          </div>
+          <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-white/70">
+            <a href="#features" class="hover:text-white">Features</a>
+            <a href="#workflow" class="hover:text-white">Workflow</a>
+            <a href="#pricing" class="hover:text-white">Pricing</a>
+            <a href="#stories" class="hover:text-white">Stories</a>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button class="px-4 py-2 rounded-xl text-white/80 hover:text-white">Sign in</button>
+            <button class="px-5 py-2 rounded-xl bg-brand-500 hover:bg-brand-400 text-white font-semibold shadow-brand shadow-lg flex items-center gap-2">
+              Book demo
+              <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="pt-36 relative z-10">
+      <!-- Hero -->
+      <section class="px-6">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <div class="space-y-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-white/70">
+              <span class="h-2 w-2 rounded-full bg-accent-500"></span>
+              Live operators across 1,200+ restaurant groups
+            </div>
+            <div>
+              <p class="text-sm uppercase tracking-[0.4em] text-white/50 mb-4 font-semibold">AI-first menu intelligence</p>
+              <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight font-display">
+                <span class="gradient-text">Reinvent</span> the way your menu operates
+              </h1>
+              <p class="mt-6 text-lg text-white/70 max-w-xl">
+                Centralize engineering-like control for your culinary catalog. Push real-time menu updates, optimize pricing with AI, sync to POS and digital channels without touching code.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <button class="px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-500 text-lg font-semibold shadow-lg shadow-brand-500/40 flex items-center justify-center gap-3 hover:scale-[1.02] transition">
+                Launch Menu OS
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </button>
+              <button class="px-8 py-4 rounded-2xl glass text-lg font-semibold flex items-center justify-center gap-3 hover:bg-white/5 transition">
+                <i data-lucide="play" class="w-5 h-5"></i>
+                Watch platform tour
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-6 text-sm text-white/60">
+              <div>
+                <p class="text-3xl font-semibold text-white">42%</p>
+                Faster rollout cadence
+              </div>
+              <div>
+                <p class="text-3xl font-semibold text-white">3.2M</p>
+                Menu events/day
+              </div>
+              <div>
+                <p class="text-3xl font-semibold text-white">$18M</p>
+                Revenue unlocked
+              </div>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="absolute -top-12 -right-8 w-64 h-64 bg-brand-500/30 rounded-full blur-3xl animate-float"></div>
+            <div class="absolute -bottom-16 -left-16 w-72 h-72 bg-accent-500/20 rounded-full blur-3xl animate-float" style="animation-delay: -3s"></div>
+
+            <div class="relative rounded-[2.5rem] border border-white/10 overflow-hidden glass shadow-[0_40px_120px_rgba(15,23,42,0.65)]">
+              <div class="grid grid-cols-12 gap-8 p-8">
+                <div class="col-span-12">
+                  <div class="flex items-center justify-between pb-6 border-b border-white/10">
+                    <div>
+                      <p class="text-sm text-white/60">Global Catalog</p>
+                      <p class="text-2xl font-semibold">1,872 active items</p>
+                    </div>
+                    <button class="px-4 py-2 rounded-xl bg-white/10 text-sm flex items-center gap-2">
+                      <i data-lucide="terminal" class="w-4 h-4"></i>
+                      Rollout script
+                    </button>
+                  </div>
+                </div>
+
+                <div class="col-span-8 space-y-6">
+                  <div class="rounded-2xl border border-white/10 p-5 bg-white/5">
+                    <div class="flex items-center justify-between">
+                      <p class="text-sm text-white/60">Realtime events</p>
+                      <span class="text-xs px-3 py-1 rounded-full bg-brand-500/20 text-brand-300">Live</span>
+                    </div>
+                    <div class="mt-4 space-y-4">
+                      <div class="flex items-center gap-3 text-sm">
+                        <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                        14 menu pushes deployed · East Coast cluster
+                      </div>
+                      <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="h-2 w-2 rounded-full bg-brand-300"></span>
+                        Pricing experiment v2.3 auto-balanced
+                      </div>
+                      <div class="flex items-center gap-3 text-sm text-white/70">
+                        <span class="h-2 w-2 rounded-full bg-accent-400"></span>
+                        Seasonal menu set synced to kiosks
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="rounded-2xl border border-white/10 p-5 bg-white/5">
+                    <p class="text-sm text-white/60 mb-4">Demand curve</p>
+                    <div class="h-40 flex items-end justify-between gap-3">
+                      <div class="w-full bg-white/10 rounded-full overflow-hidden">
+                        <div class="bg-brand-500 h-[30%] chart-bar"></div>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full overflow-hidden">
+                        <div class="bg-brand-500 h-[65%] chart-bar" style="animation-delay: .2s"></div>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full overflow-hidden">
+                        <div class="bg-brand-500 h-[85%] chart-bar" style="animation-delay: .4s"></div>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full overflow-hidden">
+                        <div class="bg-brand-500 h-[55%] chart-bar" style="animation-delay: .6s"></div>
+                      </div>
+                      <div class="w-full bg-white/10 rounded-full overflow-hidden">
+                        <div class="bg-brand-500 h-[92%] chart-bar" style="animation-delay: .8s"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-span-4 space-y-6">
+                  <div class="rounded-2xl border border-white/10 p-5 bg-gradient-to-b from-brand-500/15 to-transparent">
+                    <p class="text-sm text-white/60">Automation Graph</p>
+                    <h3 class="text-3xl font-semibold mt-3 mb-6">92%</h3>
+                    <p class="text-sm text-white/70">
+                      Menu changes executed autonomously with policy-based guardrails and human approvals.
+                    </p>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 p-5 bg-white/5">
+                    <p class="text-sm text-white/60">Guardrail policy</p>
+                    <div class="mt-4 space-y-3 text-xs font-mono bg-black/30 p-4 rounded-xl">
+                      <p><span class="text-emerald-400">if</span> margin delta &lt; 12%</p>
+                      <p class="pl-4"><span class="text-emerald-400">then</span> require chef sign-off</p>
+                      <p><span class="text-emerald-400">elif</span> demand spike &gt; 18%</p>
+                      <p class="pl-4"><span class="text-emerald-400">then</span> auto increase +$1.5</p>
+                      <p><span class="text-emerald-400">else</span> deploy instantly</p>
+                    </div>
+                  </div>
+                  <div class="rounded-2xl border border-white/10 p-5 bg-white/5 flex items-center gap-3">
+                    <span class="h-10 w-10 rounded-full bg-brand-500/20 flex items-center justify-center">
+                      <i data-lucide="zap" class="w-5 h-5 text-brand-300"></i>
+                    </span>
+                    <div>
+                      <p class="text-sm text-white/60">Latency</p>
+                      <p class="text-lg font-semibold text-white">423 ms network edge</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Logos -->
+      <section class="py-20">
+        <div class="max-w-6xl mx-auto px-6">
+          <p class="text-center uppercase text-white/40 tracking-[0.35em] text-xs mb-6">Trusted by ops-obsessed teams</p>
+          <div class="overflow-hidden">
+            <div class="flex items-center gap-16 whitespace-nowrap animate-marquee text-white/40 text-xl">
+              <span>Nova Hospitality</span>
+              <span>Fork &amp; Flame</span>
+              <span>Copper Street</span>
+              <span>Urban Harvest</span>
+              <span>Parallel Kitchens</span>
+              <span>Skyline Eats</span>
+              <span>Mise Labs</span>
+              <span>Nova Hospitality</span>
+              <span>Fork &amp; Flame</span>
+              <span>Copper Street</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feature grid -->
+      <section id="features" class="py-16 px-6">
+        <div class="max-w-7xl mx-auto">
+          <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
+            <div>
+              <p class="text-sm uppercase tracking-[0.4em] text-white/50 font-semibold mb-4">Enterprise primitives</p>
+              <h2 class="text-4xl md:text-5xl font-bold font-display">Everything to run menu ops like a product team</h2>
+            </div>
+            <p class="text-white/70 md:max-w-lg">
+              SavorStack gives culinary, pricing, and growth teams a shared control-plane with deployment automation, experimentation, and observability baked in.
+            </p>
+          </div>
+          <div class="grid lg:grid-cols-3 gap-8">
+            <article class="glass rounded-3xl p-8 shadow-card border border-white/5 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-brand-500/20 via-transparent to-transparent"></div>
+              <div class="relative">
+                <div class="h-12 w-12 rounded-2xl bg-brand-500/20 flex items-center justify-center mb-6">
+                  <i data-lucide="git-merge" class="w-6 h-6 text-brand-300"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3">Versioned menu workflows</h3>
+                <p class="text-white/70">Branch, review, test, and merge menu changes with programmable approvals across districts before rolling to production.</p>
+                <div class="mt-6 text-sm font-mono bg-black/30 p-4 rounded-2xl border border-white/5">
+                  git checkout brunch-q3 <br />
+                  savor deploy --env=pilot <br />
+                  savor promote --cluster=west
+                </div>
+              </div>
+            </article>
+
+            <article class="glass rounded-3xl p-8 shadow-card border border-white/5 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-accent-500/10 via-transparent to-transparent"></div>
+              <div class="relative">
+                <div class="h-12 w-12 rounded-2xl bg-accent-500/20 flex items-center justify-center mb-6">
+                  <i data-lucide="brain" class="w-6 h-6 text-accent-400"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3">AI price & demand engine</h3>
+                <p class="text-white/70">Adaptive pricing uses demand forecasts, supply costs, and competitor benchmarks to recommend adjustments with confidence scores.</p>
+                <ul class="mt-6 space-y-3 text-sm text-white/70">
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-300"></i>
+                    Multi-arm bandits for experiments
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-300"></i>
+                    Cost-based guardrail policies
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4 text-brand-300"></i>
+                    Auto-sync to POS + delivery partners
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="glass rounded-3xl p-8 shadow-card border border-white/5 relative overflow-hidden">
+              <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-transparent to-transparent"></div>
+              <div class="relative">
+                <div class="h-12 w-12 rounded-2xl bg-cyan-400/20 flex items-center justify-center mb-6">
+                  <i data-lucide="radar" class="w-6 h-6 text-cyan-300"></i>
+                </div>
+                <h3 class="text-2xl font-semibold mb-3">Observability & digital twins</h3>
+                <p class="text-white/70">Model every location, channel, and customer touchpoint with a real-time digital twin to detect anomalies before guests do.</p>
+                <div class="mt-6 grid grid-cols-2 gap-4 text-sm">
+                  <div class="rounded-xl bg-white/5 border border-white/5 p-4">
+                    <p class="text-white/60">Sync confidence</p>
+                    <p class="text-2xl font-semibold text-white">99.98%</p>
+                  </div>
+                  <div class="rounded-xl bg-white/5 border border-white/5 p-4">
+                    <p class="text-white/60">Channels</p>
+                    <p class="text-2xl font-semibold text-white">17</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Workflow -->
+      <section id="workflow" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto glass rounded-[3rem] border border-white/5 p-10 md:p-16">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <p class="text-sm uppercase tracking-[0.4em] text-white/50 font-semibold mb-4">Menu control plane</p>
+              <h2 class="text-4xl font-bold font-display mb-4">Create, safeguard, and ship from one command center</h2>
+              <p class="text-white/70 max-w-2xl">Orchestrate multi-location menu ops with structured workflows that feel closer to developer tooling than spreadsheets.</p>
+            </div>
+            <button class="px-6 py-3 rounded-2xl bg-white/10 border border-white/10 text-white flex items-center gap-3">
+              View automation map
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="grid lg:grid-cols-4 gap-6 mt-10">
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <p class="text-sm text-white/60 mb-3">01</p>
+              <h3 class="text-xl font-semibold mb-2">Model</h3>
+              <p class="text-white/70 text-sm">Central schema, ingredients, allergens, combos, compatibility rules across every concept.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <p class="text-sm text-white/60 mb-3">02</p>
+              <h3 class="text-xl font-semibold mb-2">Compose</h3>
+              <p class="text-white/70 text-sm">Visual blocks and CLI parity to assemble menus, pricing tables, and channel-specific assets.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <p class="text-sm text-white/60 mb-3">03</p>
+              <h3 class="text-xl font-semibold mb-2">Simulate</h3>
+              <p class="text-white/70 text-sm">Digital twin environment with synthetic guests to test before shipping worldwide.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white/5 border border-white/10">
+              <p class="text-sm text-white/60 mb-3">04</p>
+              <h3 class="text-xl font-semibold mb-2">Ship & observe</h3>
+              <p class="text-white/70 text-sm">One-click deployments, rollback, and observability with audit-ready logs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonial -->
+      <section id="stories" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-6">
+            <p class="text-sm uppercase tracking-[0.4em] text-white/50 font-semibold">Operator stories</p>
+            <p class="text-3xl md:text-4xl font-semibold leading-tight">
+              “SavorStack gives our culinary team the same superpowers our engineering org has — staging, tests, observability, and automation. We shipped 14 menu refreshes last quarter without waking anyone up at 2 a.m.”
+            </p>
+            <div class="flex items-center gap-4">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&auto=format&fit=crop" alt="Client" class="h-14 w-14 rounded-full border border-white/20" />
+              <div>
+                <p class="font-semibold">Sofia Rivera</p>
+                <p class="text-sm text-white/60">VP Culinary Systems, Parallel Kitchens</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass rounded-[2rem] p-8 border border-white/10">
+            <div class="grid gap-6">
+              <div class="rounded-2xl bg-white/5 p-5 flex items-center justify-between">
+                <div>
+                  <p class="text-sm text-white/60">Deployment window</p>
+                  <p class="text-2xl font-semibold text-white">8 min</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-sm">-72%</span>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 flex items-center justify-between">
+                <div>
+                  <p class="text-sm text-white/60">Pricing experiments</p>
+                  <p class="text-2xl font-semibold text-white">38 active</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-sm">x3 QoQ</span>
+              </div>
+              <div class="rounded-2xl bg-white/5 p-5 flex items-center justify-between">
+                <div>
+                  <p class="text-sm text-white/60">Guest experience NPS</p>
+                  <p class="text-2xl font-semibold text-white">+18</p>
+                </div>
+                <span class="px-3 py-1 rounded-full bg-accent-500/20 text-accent-200 text-sm">New high</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="text-center mb-14">
+            <p class="text-sm uppercase tracking-[0.4em] text-white/50 font-semibold mb-4">Adaptive pricing</p>
+            <h2 class="text-4xl md:text-5xl font-bold font-display mb-6">Choose an ops strategy, not a software tier</h2>
+            <p class="text-white/70 max-w-2xl mx-auto">
+              Start with the plan that matches your menu velocity. Graduate when you're managing multi-brand portfolios.
+            </p>
+          </div>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8 flex flex-col">
+              <p class="text-sm uppercase tracking-[0.4em] text-white/50 font-semibold mb-3">Launch</p>
+              <h3 class="text-3xl font-semibold">From $490</h3>
+              <p class="text-white/60 text-sm mb-6">Single brand teams rolling menus weekly</p>
+              <ul class="space-y-3 text-sm text-white/70 flex-1">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-300"></i> Drag-and-drop menu composer</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-300"></i> POS sync + delivery partners</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-300"></i> Guardrail approvals</li>
+              </ul>
+              <button class="mt-6 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition">Start pilot</button>
+            </div>
+            <div class="rounded-[2.5rem] border border-brand-500/40 bg-gradient-to-br from-brand-600/30 to-brand-500/10 p-8 shadow-glass scale-[1.02] flex flex-col">
+              <p class="text-sm uppercase tracking-[0.4em] text-white/60 font-semibold mb-3">Scale</p>
+              <h3 class="text-4xl font-semibold">From $2.8K</h3>
+              <p class="text-white/70 text-sm mb-6">Multi-location, multi-brand orgs with experimentation</p>
+              <ul class="space-y-3 text-sm text-white/80 flex-1">
+                <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-brand-200"></i> AI pricing engine + demand forecasts</li>
+                <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-brand-200"></i> CLI + API access, Terraform provider</li>
+                <li class="flex items-center gap-2"><i data-lucide="sparkles" class="w-4 h-4 text-brand-200"></i> Digital twins & anomaly detection</li>
+              </ul>
+              <button class="mt-6 px-4 py-3 rounded-xl bg-white text-base font-semibold text-brand-700 hover:text-brand-900 transition">Talk to product</button>
+            </div>
+            <div class="rounded-[2rem] border border-white/10 bg-white/5 p-8 flex flex-col">
+              <p class="text-sm uppercase tracking-[0.4em] text-white/50 font-semibold mb-3">Enterprise</p>
+              <h3 class="text-3xl font-semibold">Custom</h3>
+              <p class="text-white/60 text-sm mb-6">Global groups with bespoke workflows</p>
+              <ul class="space-y-3 text-sm text-white/70 flex-1">
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-300"></i> Dedicated solutions architect</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-300"></i> On-prem or sovereign hosting</li>
+                <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-300"></i> 24/7 runbook coverage</li>
+              </ul>
+              <button class="mt-6 px-4 py-3 rounded-xl bg-white/10 hover:bg-white/20 transition">Book architect session</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="glass rounded-[3rem] border border-white/5 p-10 md:p-16 text-center space-y-8 shadow-glass">
+            <p class="text-sm uppercase tracking-[0.4em] text-white/60 font-semibold">Menu autonomy</p>
+            <h2 class="text-4xl md:text-5xl font-bold font-display">Ready to ship menus like product releases?</h2>
+            <p class="text-white/70 max-w-3xl mx-auto">
+              Plug into SavorStack and watch your menu velocity multiply. Invite culinary, finance, ops, and growth to collaborate with the same discipline as software teams.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+              <button class="px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-brand-500 to-accent-500 text-lg font-semibold shadow-lg shadow-brand-500/30 flex items-center justify-center gap-3">
+                Spin up sandbox
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </button>
+              <button class="px-8 py-4 rounded-2xl bg-white/10 text-lg font-semibold flex items-center justify-center gap-3 border border-white/10">
+                Download product deck
+                <i data-lucide="download" class="w-5 h-5"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/5 py-10 px-6">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-white/60">
+        <div>
+          <p class="font-semibold">SavorStack, Inc.</p>
+          <p>MenuOS for global restaurant platforms</p>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="hover:text-white">Security</a>
+          <a href="#" class="hover:text-white">Status</a>
+          <a href="#" class="hover:text-white">Docs</a>
+          <a href="#" class="hover:text-white">Careers</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <i data-lucide="copyright" class="w-4 h-4"></i>
+          <span id="year"></span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear()
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          window.lucide.createIcons()
+        }
+      })
+    </script>
+  </body>
+</html>
