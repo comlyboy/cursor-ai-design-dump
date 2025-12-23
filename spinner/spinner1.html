@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>30 Tailwind Loaders</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<style>
+		/* General animations used across loaders */
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes ping-scale {
+			0% {
+				transform: scale(0.7);
+				opacity: 0.9
+			}
+
+			100% {
+				transform: scale(1.6);
+				opacity: 0
+			}
+		}
+
+		@keyframes bounceY {
+
+			0%,
+			100% {
+				transform: translateY(0)
+			}
+
+			50% {
+				transform: translateY(-8px)
+			}
+		}
+
+		@keyframes wave {
+			0% {
+				transform: translateY(0)
+			}
+
+			50% {
+				transform: translateY(-8px)
+			}
+
+			100% {
+				transform: translateY(0)
+			}
+		}
+
+		@keyframes stretch {
+
+			0%,
+			40%,
+			100% {
+				transform: scaleY(0.4)
+			}
+
+			20% {
+				transform: scaleY(1)
+			}
+		}
+
+		@keyframes float {
+			0% {
+				transform: translateY(0)
+			}
+
+			50% {
+				transform: translateY(-6px)
+			}
+
+			100% {
+				transform: translateY(0)
+			}
+		}
+
+		/* small helpers for stagger */
+		.delay-0 {
+			animation-delay: 0s
+		}
+
+		.delay-05 {
+			animation-delay: .05s
+		}
+
+		.delay-1 {
+			animation-delay: .1s
+		}
+
+		.delay-15 {
+			animation-delay: .15s
+		}
+
+		.delay-2 {
+			animation-delay: .2s
+		}
+
+		.delay-25 {
+			animation-delay: .25s
+		}
+
+		.delay-3 {
+			animation-delay: .3s
+		}
+
+		/* Loader-specific classes */
+		.spin {
+			animation: spin 1s linear infinite;
+		}
+
+		.spin-slow {
+			animation: spin 1.6s linear infinite;
+		}
+
+		.ping-custom {
+			animation: ping-scale 1.2s cubic-bezier(.4, 0, .6, 1) infinite;
+		}
+
+		.bounceY {
+			animation: bounceY 0.9s ease-in-out infinite;
+		}
+
+		.wave {
+			animation: wave 0.9s ease-in-out infinite;
+		}
+
+		.stretch {
+			animation: stretch 1.1s ease-in-out infinite;
+		}
+
+		.float {
+			animation: float 1.2s ease-in-out infinite;
+		}
+	</style>
+</head>
+
+<body class="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 p-8">
+	<header class="flex items-center justify-between mb-6">
+		<h1 class="text-xl font-semibold">30 Tailwind Loaders — Gallery</h1>
+		<div>
+			<label class="inline-flex items-center gap-2 cursor-pointer">
+				<input id="darkToggle" type="checkbox" class="hidden" />
+				<span id="toggleVisual" class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-700">Toggle dark</span>
+			</label>
+		</div>
+	</header>
+
+	<main>
+		<section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+			<!-- We'll create 30 cards: each card contains loader and label -->
+			<!-- 1 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<svg class="w-10 h-10 spin text-indigo-600" viewBox="0 0 50 50" fill="none"
+						xmlns="http://www.w3.org/2000/svg">
+						<circle cx="25" cy="25" r="20" stroke="currentColor" stroke-width="5" opacity="0.25" />
+						<path d="M46 25c0-11.05-8.95-20-20-20v5c8.284 0 15 6.716 15 15h5z" fill="currentColor" />
+					</svg>
+				</div>
+				<div class="text-xs">Spinner</div>
+			</div>
+
+			<!-- 2 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 relative">
+					<span class="absolute inset-0 block rounded-full border-4 border-indigo-200"></span>
+					<span class="absolute inset-1 block rounded-full bg-indigo-600 ping-custom"></span>
+				</div>
+				<div class="text-xs">Ping Ring</div>
+			</div>
+
+			<!-- 3 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="flex items-center gap-1">
+					<div class="w-2 h-2 bg-rose-500 rounded-full delay-0 wave"></div>
+					<div class="w-2 h-2 bg-rose-500 rounded-full delay-05 wave"></div>
+					<div class="w-2 h-2 bg-rose-500 rounded-full delay-1 wave"></div>
+					<div class="w-2 h-2 bg-rose-500 rounded-full delay-15 wave"></div>
+				</div>
+				<div class="text-xs">Wave Dots</div>
+			</div>
+
+			<!-- 4 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 relative">
+					<div class="absolute inset-0 border-4 border-sky-300 rounded-full spin"></div>
+					<div class="absolute inset-2 border-4 border-sky-600 rounded-full spin-slow"></div>
+				</div>
+				<div class="text-xs">Dual Spinners</div>
+			</div>
+
+			<!-- 5 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="flex items-end gap-1 h-8">
+					<div class="w-1.5 h-6 bg-emerald-500 rounded bar stretch"></div>
+					<div class="w-1.5 h-6 bg-emerald-500 rounded bar stretch delay-1"></div>
+					<div class="w-1.5 h-6 bg-emerald-500 rounded bar stretch delay-2"></div>
+				</div>
+				<div class="text-xs">Stretch Bars</div>
+			</div>
+
+			<!-- 6 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-8 h-8 rounded bg-yellow-400 float"></div>
+				</div>
+				<div class="text-xs">Floating Dot</div>
+			</div>
+
+			<!-- 7 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-12 h-12 relative">
+					<div class="absolute inset-0 rounded-full border-2 border-slate-200 dark:border-slate-700"></div>
+					<div class="absolute -left-0 top-1 w-4 h-4 rounded-full bg-pink-500 spin"></div>
+				</div>
+				<div class="text-xs">Orbit Dot</div>
+			</div>
+
+			<!-- 8 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 grid place-items-center">
+					<div class="w-6 h-6 border-2 border-dashed rounded-full spin"></div>
+				</div>
+				<div class="text-xs">Dashed Spin</div>
+			</div>
+
+			<!-- 9 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-12 h-12 flex items-center justify-center">
+					<div class="w-3 h-3 rounded-full bg-indigo-600 delay-0 bounceY"></div>
+					<div class="w-3 h-3 rounded-full bg-indigo-600 delay-1 bounceY ml-2"></div>
+					<div class="w-3 h-3 rounded-full bg-indigo-600 delay-2 bounceY ml-2"></div>
+				</div>
+				<div class="text-xs">Bouncing Dots</div>
+			</div>
+
+			<!--10 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-8 flex items-center gap-1">
+					<div class="h-2 flex-1 rounded bg-sky-500 animate-pulse"></div>
+					<div class="h-2 flex-1 rounded bg-sky-400 animate-pulse delay-1"></div>
+				</div>
+				<div class="text-xs">Pulsing Bars</div>
+			</div>
+
+			<!--11 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-12 h-12 relative">
+					<div class="absolute inset-0 rounded-full bg-gradient-to-br from-pink-400 to-red-500 opacity-20"></div>
+					<div class="absolute w-6 h-6 rounded-full bg-pink-500 spin"></div>
+				</div>
+				<div class="text-xs">Gradient Spin</div>
+			</div>
+
+			<!--12 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<svg viewBox="0 0 100 100" class="w-8 h-8">
+						<rect x="10" y="45" width="80" height="10" rx="5" fill="currentColor">
+							<animate attributeName="width" values="20;80;20" dur="1.2s" repeatCount="indefinite" />
+						</rect>
+					</svg>
+				</div>
+				<div class="text-xs">SVG Bar Pulse</div>
+			</div>
+
+			<!--13 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 grid place-items-center">
+					<div class="w-9 h-9 rounded border-4 border-slate-200 dark:border-slate-700 spin"></div>
+				</div>
+				<div class="text-xs">Thick Ring</div>
+			</div>
+
+			<!--14 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+				</div>
+				<div class="text-xs">Pulse Dot</div>
+			</div>
+
+			<!--15 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 grid grid-cols-2 gap-1">
+					<div class="bg-indigo-500 animate-pulse"></div>
+					<div class="bg-indigo-400 animate-pulse delay-1"></div>
+					<div class="bg-indigo-300 animate-pulse delay-2"></div>
+					<div class="bg-indigo-200 animate-pulse delay-3"></div>
+				</div>
+				<div class="text-xs">Grid Pulse</div>
+			</div>
+
+			<!--16 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-8 h-8 border-2 border-sky-400 rounded-full"
+						style="border-left-color: transparent; animation: spin 1s linear infinite"></div>
+				</div>
+				<div class="text-xs">Semi Spinner</div>
+			</div>
+
+			<!--17 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-8 h-8 transform rotate-45 border-2 border-amber-500 square-rotate"
+						style="border-right-color:transparent; border-bottom-color:transparent"></div>
+				</div>
+				<div class="text-xs">Rotating Square</div>
+			</div>
+
+			<!--18 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-3 h-8 bg-rose-400 rounded animate-pulse delay-0"></div>
+				</div>
+				<div class="text-xs">Single Pulse Bar</div>
+			</div>
+
+			<!--19 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="flex items-center gap-1">
+					<div class="w-2 h-2 rounded-full bg-sky-500 delay-0 wave"></div>
+					<div class="w-2 h-2 rounded-full bg-sky-500 delay-05 wave"></div>
+					<div class="w-2 h-2 rounded-full bg-sky-500 delay-1 wave"></div>
+				</div>
+				<div class="text-xs">Simple Wave</div>
+			</div>
+
+			<!--20 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 grid place-items-center">
+					<div class="w-8 h-3 rounded-full bg-indigo-600 animate-pulse"></div>
+				</div>
+				<div class="text-xs">Pill Pulse</div>
+			</div>
+
+			<!--21 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center relative">
+					<div class="absolute w-10 h-2 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-md animate-pulse"></div>
+				</div>
+				<div class="text-xs">Line Pulse</div>
+			</div>
+
+			<!--22 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<svg viewBox="0 0 100 100" class="w-8 h-8">
+						<circle cx="50" cy="50" r="20" stroke="currentColor" stroke-width="6" stroke-dasharray="31.4 31.4"
+							transform="rotate(-90 50 50)">
+							<animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 50 50"
+								to="360 50 50" dur="1s" repeatCount="indefinite" />
+						</circle>
+					</svg>
+				</div>
+				<div class="text-xs">SVG Dashed Spin</div>
+			</div>
+
+			<!--23 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-8 h-8 grid grid-cols-2 gap-1">
+						<div class="bg-emerald-500 animate-pulse"></div>
+						<div class="bg-emerald-400 animate-pulse delay-05"></div>
+						<div class="bg-emerald-300 animate-pulse delay-1"></div>
+						<div class="bg-emerald-200 animate-pulse delay-15"></div>
+					</div>
+				</div>
+				<div class="text-xs">Mini Grid Pulse</div>
+			</div>
+
+			<!--24 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-3 h-3 rounded-full bg-slate-500 delay-0 bounceY"></div>
+					<div class="w-3 h-3 rounded-full bg-slate-500 delay-1 bounceY ml-2"></div>
+				</div>
+				<div class="text-xs">Two Bounce</div>
+			</div>
+
+			<!--25 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 grid place-items-center">
+					<div class="w-6 h-6 rounded-full border-2 border-sky-300" style="box-shadow: 0 6px 12px rgba(0,0,0,0.06);">
+					</div>
+				</div>
+				<div class="text-xs">Soft Bubble</div>
+			</div>
+
+			<!--26 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-3 h-3 bg-red-500 rounded-full delay-0 wave"></div>
+					<div class="w-3 h-3 bg-orange-400 rounded-full delay-05 wave ml-1"></div>
+					<div class="w-3 h-3 bg-yellow-300 rounded-full delay-1 wave ml-1"></div>
+				</div>
+				<div class="text-xs">Colored Wave</div>
+			</div>
+
+			<!--27 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 grid place-items-center">
+					<div class="w-10 h-4 rounded bg-gradient-to-r from-pink-400 via-rose-500 to-red-500 animate-pulse"></div>
+				</div>
+				<div class="text-xs">Gradient Pulse</div>
+			</div>
+
+			<!--28 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-8 h-8 border-2 border-indigo-500 rounded-full"
+						style="border-top-color:transparent; animation: spin .9s linear infinite"></div>
+				</div>
+				<div class="text-xs">Thin Spinner</div>
+			</div>
+
+			<!--29 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<svg viewBox="0 0 100 100" class="w-8 h-8">
+						<rect x="20" y="20" width="60" height="60" rx="8" fill="currentColor">
+							<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50"
+								to="360 50 50" dur="1.4s" repeatCount="indefinite" />
+						</rect>
+					</svg>
+				</div>
+				<div class="text-xs">Rotating Block</div>
+			</div>
+
+			<!--30 -->
+			<div class="flex flex-col items-center gap-3 p-3 bg-white dark:bg-slate-800 rounded-lg shadow">
+				<div class="w-14 h-14 flex items-center justify-center">
+					<div class="w-8 h-8 grid grid-cols-3 gap-1">
+						<div class="h-2 bg-sky-500 animate-pulse delay-0"></div>
+						<div class="h-2 bg-sky-500 animate-pulse delay-05"></div>
+						<div class="h-2 bg-sky-500 animate-pulse delay-1"></div>
+					</div>
+				</div>
+				<div class="text-xs">Inline Pulse</div>
+			</div>
+
+		</section>
+	</main>
+
+	<script>
+		// Dark toggle
+		const toggle = document.getElementById('darkToggle');
+		const root = document.documentElement;
+		const visual = document.getElementById('toggleVisual');
+		toggle.addEventListener('change', e => {
+			root.classList.toggle('dark', e.target.checked);
+			visual.textContent = e.target.checked ? 'Dark' : 'Light';
+		});
+		// default to system preference
+		const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+		toggle.checked = prefersDark;
+		root.classList.toggle('dark', prefersDark);
+		visual.textContent = prefersDark ? 'Dark' : 'Light';
+	</script>
+</body>
+
+</html>
